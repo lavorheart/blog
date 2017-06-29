@@ -1,0 +1,17 @@
+/*-----------公用集合--------------------*/
+/*清零样式*/
+@import "reset_1.css";
+
+/*常用样式*/
+@import "usually_1.css";
+
+/*btn集合*/
+@import "btn_1.css";
+
+/*ico集合*/
+@import "icon_1.css";
+
+/*底导*/
+@import "footer_1.css";
+
+#js_style_css_iforgot_base_frame {height:42px;}
