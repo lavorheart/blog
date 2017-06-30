@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 //前台登录页
 Route::get('/user/login','User\LoginController@login');
+Route::post('/user/login','User\LoginController@insert');
 
 //前台注册页
 Route::get('user/register','User\RegisterController@register');

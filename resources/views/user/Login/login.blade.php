@@ -23,8 +23,9 @@
 
         <div class="page-container">
             <h1>Login</h1>
-            <form action="" method="post">
-                <input type="text" name="username" class="username" placeholder="Username">
+            <form action="/user/login" method="post">
+            {{ csrf_field()}}
+                <input type="text" name="userName" class="username" placeholder="UserName">
                 <input type="password" name="password" class="password" placeholder="Password">
                 <button type="submit">登录</button>
                 <div class="error"><span>+</span></div>
