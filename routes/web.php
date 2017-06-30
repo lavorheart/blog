@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
+//前台主页
+Route::get('/user/index','User\IndexController@index');
+
+//前台登录页
+Route::get('/user/login','User\LoginController@login');
+
+//前台注册页
+Route::get('user/zhuce','User\ZhuceController@zhuce');
+
+//前台密码找回
+Route::get('user/pass','User\PassController@pass');
+
+=======
 //前台登录页
 Route::get('/user/login','User\LoginController@login');
 Route::post('/user/login','User\LoginController@insert');
@@ -31,6 +45,7 @@ Route::get('/user/index','User\IndexController@index');
 //前台密码找回
 Route::get('user/pass','User\PassController@pass');
 
+>>>>>>> 15049180e44f98c036e91600f443db97c9e34ee2
 //前台用户中心
 Route::get('user/center','User\CenterController@center');
 
