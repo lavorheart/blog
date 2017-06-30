@@ -15,21 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-Route::get('/User/index','User\IndexController@index');
+//前台主页
+Route::get('/user/index','User\IndexController@index');
 
-Route::get('/User/login','User\LoginController@login');
+//前台登录页
+Route::get('/user/login','User\LoginController@login');
 
-Route::get('User/pass','User\PassController@pass');
+//前台注册页
+Route::get('user/zhuce','User\ZhuceController@zhuce');
 
-Route::get('User/center','User\CenterController@center');
+//前台密码找回
+Route::get('user/pass','User\PassController@pass');
 
-Route::get('User/detail','User\DetailController@detail');
-=======
+//前台用户中心
+Route::get('user/center','User\CenterController@center');
+
+//前台详情
+Route::get('user/detail','User\DetailController@detail');
+
+//前台个人主页
+Route::get('/user/one','User\OneController@one');
+
 // 后台主页
 Route::get('/admin/index', 'Admin\IndexController@index');
 
 // 用户管理
 Route::get('/admin/user/add','Admin\UserController@add');
 Route::post('/admin/user/insert','Admin\UserController@insert');
->>>>>>> 0e5ed8031aec7381eacdce038773d85ed0f45ac9
+
+

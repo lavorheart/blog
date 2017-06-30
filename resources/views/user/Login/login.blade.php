@@ -1,285 +1,407 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]><html class="ie ie6" lang="zh"> <![endif]-->
-<!--[if IE 7]><html class="ie ie7" lang="zh"> <![endif]-->
-<!--[if IE 8]><html class="ie ie8" lang="zh"> <![endif]-->
-<!--[if IE 9]><html class="ie ie9" lang="zh"> <![endif]-->
-<!--[if IE]><html class="ie" lang="zh"><![endif]-->
-<html lang="zh">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>用户中心-注册</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="author" content="ifeng.com" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script>
-    if(window.top !== window.self){ window.top.location = window.location;}
-/*
-  if (top != self) {
-    top.location.href = window.location.href;
-  } 
-*/
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>新浪通行证登录</title>
+<link href="css/frame_2.css" type="text/css" rel="stylesheet">
+<link href="css/signin_index_2.css" type="text/css" rel="stylesheet">
+<link href="css/skin_2.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/common_2.js"></script>
+<script type="text/javascript" src="js/vconf_2.js"></script>
+<script type="text/javascript" src="js/validator_login_2.js"></script>
+<script language="javascript" type="text/javascript" src="js/cardtips_2.js"></script>
+<script language="javascript" type="text/javascript" defer>
+	//避免ie中后退时沿用前页的utf8编码，如果是则刷新，刷新后就是gb2312了,为了兼容某些浏览器，如ie6，这段话放在第一个script标签里
+	try{
+		if(document.charset == 'utf-8'){
+				window.location.href = window.location.href; //only for refreshing when charset is utf-8
+		}
+	}catch(e){}
 </script>
-<link href="https://id.ifeng.com/static/css/style.css" rel="stylesheet" type="text/css" />
-
-<script src="https://id.ifeng.com/static/js/jquery-1.8.3.min.js"></script>
-<script src="https://id.ifeng.com/static/js/jquery.cookie.js"></script>
-<script>var url = {"api":"https:\/\/id.ifeng.com","web":"http:\/\/id.ifeng.com","res":"https:\/\/id.ifeng.com\/static"};
-
+<script language="javascript" type="text/javascript" src="js/cardtips_2.js"></script>
+<script language="javascript" type="text/javascript" defer>
+	//只要复制过去改下下面参数就可以了 :)
+	passcardOBJ.overfcolor = '#999999';//鼠标经过字体颜色
+	passcardOBJ.overbgcolor = '#E8F4FC';//鼠标经过背景颜色
+	passcardOBJ.outfcolor = '#000000';//鼠标离开字体颜色
+	passcardOBJ.outbgcolor = '';//鼠标离开背景颜色
 </script>
+<style type="text/css">
+#newDiv {filter:alpha(opacity=100); /* IE */-moz-opacity:100; /* Moz + FF */opacity:100; /* 支持CSS3的浏览器（FF 1.5也支持）*/}
+.popdiv {position:absolute;zindex:9999;height:70px;background:#fff;border:1px solid #ccc;color:#999;padding:5px;}
+.popdiv input {vertical-align:middle;height:20px;}
+label {cursor: pointer !important;vertical-align: middle;}
+.passCard{position:absolute;background:#fff;border:1px solid #dddddd;margin:0px 0px 0px -1px;font-size: 12px;color:#999999;}
+.note{padding:0!important;margin:4px!important; }
+.passCard li{padding:0!important;margin:4px!important;}
+</style>
 </head>
 <body>
+<div class="WB_miniblog" id="wrap">
+	<div class="iforgot_bd">
+		<div class="iforgot_header clearfix">
+			<img class="logo_mod1 W_fl" src="picture/logo_2.png"/>
+			<div class="logotxt">- 登录</div>
+			<div class="name_mod W_fr">
+				<a href="http://www.sina.com.cn/" class="S_txt1">新浪首页</a>
+				<a href="http://help.weibo.com/" class="S_txt1 last">帮助</a>
+			</div>
+		</div>
+		<div class="iforgot_cont">
+			<div class="i_top" style="padding:0 0;" >
+			</div>
+			<div class="i_mod" style="padding-top:82px;">
+				<form method="post" id="vForm" name="vForm">
+					<input type="hidden" id="r" name="reference" value="http://i.blog.sina.com.cn" />
+					<input type="hidden" id="e" name="entry" value="blog" />
+					<input type="hidden"  name="reg_entry" value="blog" />
+					<div class="logoicon"></div>
+					<div class="main_cen">
+																														<br><br>
+						<p class="title1"></p>
+						<div class="form_mod">
+							<ul class="form_list">
+								<li class="item">
+									<span class="tit">登录名：</span>
+									<input type="hidden" id="ag" name="ag" value="">
+									<input autocomplete="off" id="username" name="username" tabindex="0" type="text" value="" maxlength="64" class="fInput w200" alt="登录名:无内容/长度{1-64}/errArea{usernameErr}" placeholder="微博/邮箱/博客帐号"/>
+																		<a href="http://pokk.com/user/zhuce" class="form_prompt">注册</a>
+																		<span class="form_prompt errorShow" id="usernameErr"></span>
+								</li>
+								<script language=javascript type="text/javascript">
+									<!--//
+									//检查是否记住登录名
+									function GetCookie(_Name)
+									{
+										var Res = eval('/'+_Name+'=([^;]+)/').exec(document.cookie);
+										return Res == null ? false : Res[1];
+									}
 
-<!--header-->
-<div class="header">
-   <div class="w1000"><img src="https://id.ifeng.com/static/images/logo.gif" width="125" height="50" title="凤凰网" alt="凤凰网" /></div>
+									//设置占位文案
+									function setPlaceHolder(node){
+										var that = {};
+
+										that.init = function(){
+											var prop = 'placeholder';
+											that.content = node.getAttribute(prop);
+											var enable = "placeholder" in document.createElement('input');
+											if(!enable){
+												that.build();
+												setTimeout(that.show);
+												$addEvent2(node, that.hide, 'focus');
+												$addEvent2(node, that.hide, 'propertychange');
+												$addEvent2(node, that.show, 'blur');
+												$addEvent2(that.label, function(){
+
+													that.hide();
+													setTimeout(function(){
+														node.focus();
+													});
+												}, 'mousedown');
+											}
+										};
+
+										that.build = function(){
+											if(that.label){return;}
+											var label = that.label = $C('div');
+											label.innerHTML = that.content;
+											label.style.color = '#999';
+											label.style.fontSize = node.style.fontSize;
+											label.style.lineHeight = node.style.lineHeight;
+											label.style.position = 'absolute';
+											that.setPos(324,-35);
+
+											node.parentNode.insertBefore(label, node);
+										};
+
+										that.setPos = function(x, y){
+											x = x || 0;
+											y = y || 0;
+											that.label.style.marginLeft = x + 'px';
+											that.label.style.marginTop = y + 'px';
+										};
+
+										that.show = function(){
+											if(node.value == ''){
+												that.label.style.display  = 'block';
+											}
+										};
+
+										that.hide = function(){
+											if(that.label.style.display != 'none'){
+												that.label.style.display  = 'none';
+											}
+										};
+
+										that.init();
+										return that;
+									}
+
+									function initUserName(){
+										var loginname = GetCookie('cREMloginname');
+										if(loginname != false){
+											if ($('username').value == '') {
+												$('username').value = decodeURIComponent(loginname);
+											}
+											try {  // 该元素可能没有
+												$('username2').innerHTML = decodeURIComponent(loginname);
+											} catch (e) {}
+											$('remLoginName').checked = "checked";
+										}
+										setPlaceHolder($('username'));
+										passcardOBJ.init(
+												// FlashSoft 注意,最好这个input的autocomplete设定为off
+												// 需要有下拉框的input对象
+												document.getElementById("username"),
+												{
+													// 鼠标经过字体颜色
+													overfcolor: "#999",
+													// 鼠标经过背景颜色
+													overbgcolor: "#e8f4fc",
+													// 鼠标离开字体颜色
+													outfcolor: "#000000",
+													// 鼠标离开背景颜色
+													outbgcolor: ""
+												},
+												// 输入完成后,自动需要跳到的input对象[备选]
+												document.getElementById("password")
+										);
+									}
+									window.onload = initUserName;
+									//-->
+								</script>
+								<li class="item">
+									<span class="tit">密码：</span>
+									<input id="password" name="password" type="password" tabindex="1" maxlength="32" alt="密码:无内容/errArea{passwordErr}" class="fInput w200" value="" />
+									<a href="https://login.sina.com.cn/getpass.html" class="form_prompt">忘记密码</a></span>
+									<span class="form_prompt errorShow" id="passwordErr"></span>
+								</li>
+
+								<!-- 动态码 -->
+								<li class="item" style='display:none'  id='vsn_content'>
+									<span class="tit">微盾动态码：</span>
+									<input type="text" value="" class="fInput w200" alt="微盾动态码:无内容/errArea{vsncodeErr}" autocomplete='off' disabled='disabled' maxlength="6" tabindex="1" name="vsncode" id="vsncode">
+									<a href="http://account.weibo.com/forgot/vdun" target="_blank" class="form_prompt">挂失微盾</a></span>
+									<span id="vsncodeErr" class="form_prompt errorShow"></span>
+								</li>
+								<!-- /动态码 -->
+
+								<!-- 验证码 -->
+								<li class="item" id='door_content' style='display:none'>
+									<span class="tit">验证码：</span>
+									<span class="code_mod" id="door_img">
+                                    <input autocomplete="off" class="fInput w93" id="door" disabled="disabled" name="door" type="text" autocomplete="off" maxlength="10" alt="验证码:无内容/有空格/errArea{doortip}" value="" />
+                                    <img id="check_img" class="code_img" width="100" height="35" src=""/>
+                                    <a href="javascript:con_code();" class="form_prompt">换一换</a>
+                                </span>
+									<span id="doortip"  class="form_prompt errorShow"></span>
+								</li>
+								<!-- /验证码 -->
+								<li class="loginError">
+									<div id="login_err" style="margin-left:320px;"></div>
+								</li>
+								<li class="item">
+									<div class="btn_mod" style="margin-left:320px;">
+										<input id="remLoginName" checked="checked" tabindex="3" name="remLoginName" type="checkbox" class="checkboxInput"/>
+										<label for="remLoginName">下次自动登录</label>
+									</div>
+								</li>
+								<li class="item">
+									<div class="btn_mod">
+										<input style="width:202px;" type="submit" tabindex="5" class="W_btn_a btn_34px" value="登 录" />
+									</div>
+									<div class="clearit"></div>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					<div class="main_bottom"></div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
-<!--通用频道页头代码结束-->
-<div class="w1000 logo_bg clearfix p_relative">
-  <div class="">
-    <div class="form_area">
-     <h2 class="title pb_10">注册凤凰通行证</h2>
-     <ul class="tab">
-      <!-- -->
-      <li class="current" id="js-reg-tab-1">邮箱注册</li>
-     <!--  -->
-      <li id="js-reg-tab-2">手机注册</li>
-     </ul>
-     <div class="box">
-       <div class="bd form_list">
-
-        <!--邮箱注册-->
-        <!--  -->
-        <div class="tabcont" id="js-reg-tab-con-1">
-          <div class="item indexput clearfix">
-            <label class="txt_label">电子邮箱</label>
-            <span class="input_wrap"><input id="js-email" type="text" class="txt_input txt_270" /></span>
-            <ul id="js-email-list" class="mail_tip" style="display:none">
-              <li><span>请选择邮箱类型</span></li>
-              <li>fenghuang@ifeng.com</li>
-              <li>fenghuang@gmail.com</li>
-              <li>fenghuang@qq.com</li>
-              <li>fenghuang@126.com</li>
-              <li>fenghuang@sina.com</li>
-              <li>fenghuang@126.com</li>
-              <li>fenghuang@sina.com</li>
-            </ul>
-            <div id="js-email-hint" class="input_txt_tips"></div>
-            <div id="js-email-tips" class="txt_tips" style="display:block">请输入您常用的邮箱</div>
-            <div id="js-email-error"class="txt_tips txt_tips_error" style="display:none"></div>
-            <div id="js-email-ok" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix">
-            <label class="txt_label">密码</label>
-            <span class="input_wrap"><input id="js-email-password" name="" type="password" class="txt_input txt_270"/></span>
-            <div id="js-email-password-tips-1" class="txt_tips txt_tips_double" style="display:block;">6-20位字符，不能使用空格、<br>注册帐号</div>
-            <div id="js-email-password-tips-2" class="txt_tips txt_tips_double gray" style="display:none;">密码强度：<span class="safe_green">高</span><span class="safe_orange">中</span><span class="safe_red">低</span><br /><img src="https://id.ifeng.com/static/images/b01.gif" width="44" height="4" /><img src="https://id.ifeng.com/static/images/b02.gif" width="44" height="4" class="ml05" /><img src="https://id.ifeng.com/static/images/b03.gif" width="44" height="4"  class="ml05" /></div>
-            <div id="js-email-password-error" class="txt_tips txt_tips_error" style="display:none">6-20位字符，不能使用空格、注册帐号</div>
-            <div class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix">
-            <label class="txt_label">确认密码</label>
-            <span class="input_wrap"><input id="js-email-password-confirm" type="password" class="txt_input txt_270" /></span>
-            <div id="js-email-confirm-tips-1" class="txt_tips" style="display:none">前后密码不一致</div>
-            <div id="js-email-confirm-tips-2" class="txt_tips txt_tips_error" style="display:none">前后密码不一致</div>
-            <div id="js-email-confirm-tips-3" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix code">
-            <label class="txt_label">验证码</label>
-            <span class="input_wrap"><input id="js-email-reg-code" name="" type="text" class="txt_input txt_124"/></span>
-            <img id="js-email-reg-code-pic" src="https://id.ifeng.com/public/authcode" width="62" height="30" class="code_img" />
-            <a id="js-email-reg-code-refresh" href="javascript:void(0);" class="code_change">换一个</a>
-            <div id="email-code-tips" class="txt_tips">请输入验证码</div>
-            <div id="email-code-error" class="txt_tips txt_tips_error" style="display:none"></div>
-            <div id="email-code-ok" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix pt_10 mb_0">
-            <input id="js-email-check" checked="true" name="" type="checkbox" value="" class="txt_check" />
-            <label for="js-email-check" class="txt_check_label gray">我已阅读并同意<a href="https://id.ifeng.com/user/agreement" target="_blank">《凤凰使用协议》</a></label>
-          </div>
-          <div class="item clearfix btn_area">
-            <input id="js-email-reg-submit" type="button" class="btn btn01" value="提交注册" />
-          </div>
-          <div id="js-email-warn" class="warn_text"></div>
-        </div>
-    <!--  -->
-        <!--手机注册-->
-        <div class="tabcont" id="js-reg-tab-con-2" style="display: none">
-          <div class="item clearfix code">
-            <label class="txt_label" style="width:70px">图片验证码</label>
-            <span class="input_wrap"><input id="js-mobile-pic-reg-code" name="" type="text" class="txt_input txt_124"/></span>
-            <img id="js-mobile-reg-code-pic" src="https://id.ifeng.com/public/authcode" width="62" height="30" class="code_img" />
-            <a id="js-mobile-pic-code-refresh" href="javascript:void(0);" class="code_change">换一个</a>
-            <div id="mobile-pic-code-tips" class="txt_tips">请输入图片验证码</div>
-            <div id="mobile-pic-code-error" class="txt_tips txt_tips_error" style="display:none"></div>
-            <div id="mobile-pic-code-ok" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix">
-            <label class="txt_label" style="width:70px">手机号</label>
-            <span class="input_wrap"><input id="js-mobile-number" name="" type="text" class="txt_input txt_270" /></span>
-            
-            <div id="js-mobile-tips" class="txt_tips" style="display:block">请输入您的手机号</div>
-            <div id="js-mobile-error" class="txt_tips txt_tips_error" style="display:none"></div>
-            <div id="js-mobile-ok" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix">
-            <span id="js-mobile-reg-code-refresh" href="javascript:void(0);" class="btn btn02 btn02_disable"  style="margin-left: 86px;">获取验证码</span><span id="js-mobile-reg-count" class="btn btn02 btn02_disable" style="display:none; margin-left: 86px;">180秒后重新获取</span><span class="red ml_10" id="js-mobile-code-warn">24小时之内只能发送3次验证码</span><span id="js-mobile-success" class="ml_10" style="display:none;">验证码已发送</span>
-          </div>
-
-          <div class="item clearfix">
-            <label class="txt_label" style="width:70px">短信验证码</label>
-            <span class="input_wrap"><input id="js-mobile-reg-code" name="" type="text" class="txt_input txt_270"/></span>
-            <div id="mobile-code-tips" class="txt_tips" style="display:block">请输入6位验证码</div>
-            <div id="mobile-code-error" class="txt_tips txt_tips_error" style="display:none"></div>
-            <div id="mobile-code-ok" class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-
-          <div class="item clearfix">
-            <label class="txt_label" style="width:70px">密码</label>
-            <span class="input_wrap"><input id="js-mobile-password" type="password" class="txt_input txt_270"/></span>
-            <div id="js-mobile-password-tips-1" class="txt_tips txt_tips_double" style="display:block">6-20位字符，不>能使用空格、<br>注册帐号</div>
-            <div id="js-mobile-password-tips-2" class="txt_tips txt_tips_double gray" style="display:none">密码强度：<span class="safe_red">低</span><span class="safe_orange">中</span><span class="safe_green">高</span><br /><img src="https://id.ifeng.com/static/images/b01.gif" width="44" height="4" /><img src="https://id.ifeng.com/static/images/b02.gif" width="44" height="4" class="ml05" /><img src="https://id.ifeng.com/static/images/b03.gif" width="44" height="4"  class="ml05" /></div>
-            <div id="js-mobile-password-error" class="txt_tips txt_tips_error" style="display:none"></div>
-            <div class="txt_tips txt_tips_ok" style="display:none"></div>
-          </div>
-          <div class="item clearfix">
-            <label class="txt_label" style="width:70px">确认密码</label>
-            <span class="input_wrap"><input id="js-mobile-password-confirm" type="password" class="txt_input txt_270" /></span>
-            <div id="js-mobile-confirm-tips-1" class="txt_tips" style="display:none;">前后密码不一致</div>
-            <div id="js-mobile-confirm-tips-2" class="txt_tips txt_tips_error" style="display:none;"></div>
-            <div id="js-mobile-confirm-tips-3" class="txt_tips txt_tips_ok" style="display:none;"></div>
-          </div>
-          <div class="item clearfix pt_10 mb_0">
-            <input id="js-mobile-check" checked="true" type="checkbox" value="" class="txt_check"  style="margin-left: 86px;"/>
-            <label for="js-mobile-check" class="txt_check_label gray">我已阅读并同意<a href="https://id.ifeng.com/user/agreement" target="_blank">《凤凰使用协议》</a></label>
-          </div>
-          <div class="item clearfix btn_area">
-            <input id="js-mobile-reg-submit" name="" type="button" class="btn btn01" value="提交注册" />
-          </div>
-          <div id="js-mobile-warn" class="warn_text"></div>
-        </div>
-        <input id="js-cb" name="" type="hidden" value="http%3A%2F%2Fblog.ifeng.com%2F" />
-
-    <!-- 手机快速注册 -->
-    <!--
-    <div class="tabcont" id="js-reg-tab-con-3" style="display: none;">
-     <div style="height: 240px;background: url(../static/images/mobile.png) no-repeat right;">
-      <div class="item clearfix code">
-            <label class="" style="font-size: 22px;margin-bottom: 20px;color: #004276;">手机快速注册</label>
-      </div>
-      <div class="item clearfix code" style="font-family: 微软雅黑,Arial;color: #666666;">
-            <div id="mobile-code-tips" style="display:block;font-size: 12px;line-height: 20px; margin-bottom: 10px;">
-              <p>请使用中国大陆手机号，编辑短信：</p>
-              <p><b style="font-size: 14px;color: #BA2636!important;">6-14位字符</b>（支持数字/字母/符号）,作为登录密码</p></div>
-        <div id="mobile-code-tips" class=" style=" style="font-size: 12px;line-height: 20px; margin-bottom: 10px;">
-          <p>移动 发送至: <b style="color: #BA2636!important; font-size: 14px;">1232 2231 023131</b></p>
-              <p>移动 发送至: <b style="color: #BA2636!important; font-size: 14px;">1232 2231 023131</b></p>
-              <p>移动 发送至: <b style="color: #BA2636!important; font-size: 14px;">1232 2231 023131</b></p>
-            </div>
-        <div id="mobile-code-tips" class="" style="display:block;font-size: 12px;">即可注册成功，手机号即为登录帐号。</div>
-          </div>
-         </div>
-        </div>
-        -->
-       </div>
-       <div class="bot"></div>
-     </div>
+<div class="WB_footer S_bg2">
+	<div class="other_link S_bg1 clearfix T_add_ser">
+		<p class="copy"><a href="http://corp.sina.com.cn/chn/" class="footBg">新浪简介</a>　<a class="footBg" href="http://corp.sina.com.cn/eng/">About Sina</a>　<a class="footBg" href="http://emarketing.sina.com.cn/">广告服务</a>　<a class="footBg" href="http://www.sina.com.cn/contactus.html">联系我们</a>　<a class="footBg" href="http://corp.sina.com.cn/chn/sina_job.html">招聘信息</a>　<a class="footBg" href="http://www.sina.com.cn/intro/lawfirm.shtml">网站律师</a>　<a class="footBg" href="http://english.sina.com" target="__blank">SINA English</a>　<a class="footBg" href="http://members.sina.com.cn/apply/" target="__blank">注册</a>　<a class="footBg" href="http://tech.sina.com.cn/focus/sinahelp.shtml" target="__blank">产品答疑</a></p>
+		<div class="copy"><a href="javascript:;" class="S_txt2">客户服务电话：400 690 0000 欢迎批评指正</a></div>
+		<p class="company"><span class="copy S_txt2">Copyright ? 1996-2016 SINA Corporation, All Rights Reserved 新浪公司 版权所有</span></p>
+	</div>
 </div>
-<div class="aside">
-            <h3 class="pb_10">已有账号？<a href="https://id.ifeng.com/user/login" target="_blank"><em>请登录</em></a></h3>
-    
-    <p class="item gray">第三方账号登录</p>
-    <p class="item"><a href="javascript:void(0);" class="wb_btn"></a></p>
-    <p class="item"><a href="javascript:void(0);" class="qzone_btn"> </a></p>
-    <p class="item"><a href="javascript:void(0);" class="cmcc_btn"> </a></p>
-    <!-- <p class="item"><a href="javascript:void(0);" class="qq_btn"></a></p> -->
-</div>
+<script src="js/signinconfig_2.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/ssologin_2.js"></script>
 <script type="text/javascript">
-var QZONE_URL = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=100514926&redirect_uri=https://id.ifeng.com/callback/qzone&state=8bc42edbdbd6e37dedd1cee53f009b7f&scope=get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr";
-var CMCC_URL = "https://open.mmarket.com:443/omee-aus/services/oauth/authorize?redirectUri=http://id.ifeng.com/callback/cmcc&clientId=300009706267&clientState=djl812fjkn18sl&responseType=code";
-</script>
-<script type="text/javascript" src="https://id.ifeng.com/static/js/thirdpartylogin.js"></script>
-  </div>
-</div>
-<!--通用频道页尾代码开始-->
-<style type="text/css"> 
-.clear{ clear:both;}
-.chaFotNav ul, .chaFotNav li{ margin:0px; padding:0px;}/*100318*/
-.chaFotNav li{ list-style:none;}/*100318*/
-.chaFotNav { width:998px; border:1px #d9d9d9 solid; margin:0 auto; font-family:simsun, Arial; font-size:12px; clear:both;background:#fff;}
-.chaFotNav .endNList { width:772px; float:left; padding:8px 0px;}/*100325*/
-.chaFotNav .endNList li { padding:0px 4px 0px 5px; background:url(https://id.ifeng.com/static/images/common/zxicon_26.gif) right center no-repeat; float:left;}
-.chaFotNav .endNList li a { color:#2b2b2b; text-decoration:none;}
-.chaFotNav .endNList li a:hover{ text-decoration:underline;}
-.chaFotNav .navFocus { width:200px; padding:5px 0 0 0px; margin:0 0px 0 0; color:#ba2636; line-height:18px; float:right;}/*100325*/
-.chaFotNav .navFocus a { line-height:18px; text-decoration:none;}
-.chaFotNav .navFocus a:hover { text-decoration:underline;}
-.chaFotNav .navV a, .chaFotNav .navVIP a, .chaFotNav .ifengPlay a, .chaFotNav .tvPlay a, .chaFotNav .navWap a, .chaFotNav .navTmp a { color:#ba2636; }
-.chaFotNav .navV { width:37px; background:url(https://id.ifeng.com/static/images/common/nav0416_14.gif) no-repeat 1px 4px; padding:0 0 0 17px; float:left }
-.chaFotNav .navTmp { width:37px; float: left; }/*100325*/
-/*.chaFotNav .navVIP { width:42px; background:url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/nav0416_09.gif) no-repeat 24px 3px; float:left }*/
-.chaFotNav .ifengPlay { width: 37px; float: left; }/*100325*/
-.chaFotNav .tvPlay { width:55px; background:url(https://id.ifeng.com/static/images/common/nav0416_17.gif) no-repeat 0px 3px; padding:0 0 0 15px; float:left }
-.chaFotNav .navWap { width:30px; background:url(https://id.ifeng.com/static/images/common/nav0416_06.gif) no-repeat 0px 2px; padding:0 0 0 11px; float:left }
-.chaFotNav .nextTop { width:40px; height:20px; padding:7px 0 0 3px; border-left:1px #d9d9d9 solid; float:left }
-.chaFotNav02 { width:1000px; height:21px; margin:0 auto; background:#fff url(https://id.ifeng.com/static/images/common/icon02_04.gif) repeat-x bottom;  font-size:0px; line-height:0px; clear:both }
-.chaFooter{ color:#000; width:1000px; height:72px; margin:0 auto; clear:both; text-align:center; line-height:24px; font-family:Arial, simsun; font-size:12px;background:#fff; padding-top:8px;}
-.chaFooter a{ color:#000; text-decoration:none;}
-.chaFooter a:hover{ color:#000; text-decoration:underline;}
-.chaFooter .footLink{ line-height:22px;}/*100318*/
-.chaFooter .footLink a{ padding:0px 8px;}
-.chaFooter .copyright{ color:#000; line-height:22px;}/*100318*/
-</style>
-<div class="chaFotNav">
-    <!--100325 begin-->
-    <ul class="endNList">
-        <li><a href="http://www.ifeng.com/" target="_blank">首页</a></li>
-                <li><a href="http://news.ifeng.com/" target="_blank">资讯</a></li>
-                <li><a href="http://news.ifeng.com/taiwan/" target="_blank">台湾</a></li>
-                <li><a href="http://opinion.ifeng.com/" target="_blank">评论</a></li>
-                <li><a href="http://finance.ifeng.com/" target="_blank">财经</a></li>
-                <li><a href="http://auto.ifeng.com/" target="_blank">汽车</a></li>
-                <li><a href="http://tech.ifeng.com/" target="_blank">科技</a></li>
-                <li><a href="http://house.ifeng.com/" target="_blank">房产</a></li>
-                                <li><a href="http://home.ifeng.com/" target="_blank">家居</a></li>
-                <li><a href="http://fashion.ifeng.com/travel/" target="_blank">旅游</a></li>
-                <li><a href="http://ent.ifeng.com/" target="_blank">娱乐</a></li>
-                <li><a href="http://fashion.ifeng.com/" target="_blank">时尚</a></li>
-                <li><a href="http://news.ifeng.com/sports/" target="_blank">体育</a></li>
-                <li><a href="http://news.ifeng.com/mil/" target="_blank">军事</a></li>
-                <li><a href="http://news.ifeng.com/history/" target="_blank">历史</a></li>
-                <li><a href="http://book.ifeng.com/" target="_blank">读书</a></li>
-                <li><a href="http://edu.ifeng.com/" target="_blank">教育</a></li>
-                <li><a href="http://fashion.ifeng.com/health/" target="_blank">健康</a></li>
-                <li><a href="http://fashion.ifeng.com/baby/" target="_blank">亲子</a></li>
-                <li><a href="http://games.ifeng.com/" target="_blank">游戏</a></li>
-                <li><a href="http://city.ifeng.com/" target="_blank">城市</a></li>            
-                <li><a href="http://bbs.ifeng.com/" target="_blank">论坛</a></li>
-                <li class="end"><a href="http://blog.ifeng.com/" target="_blank">博报</a></li>
-    </ul>
-    <div class="navFocus">
-        <div class="navV"><a href="http://v.ifeng.com/" target="_blank">视频</a>·</div>
-        <div class="navTmp"><a href="http://v.ifeng.com/documentary/index.shtml" target="_blank">纪实</a>·</div>
-        <div class="ifengPlay"><a href="http://v.ifeng.com/live/" target="_blank">直播</a></div>
-        <div class="tvPlay"><a href="http://phtv.ifeng.com/" target="_blank">凤凰卫视</a></div>
-    </div>
-    <!--100325 end-->
-    <div class="clear"></div>
-</div>
-<div class="chaFotNav02"></div>
-<div class="chaFooter">
-    <div class="footLink"> <a href="http://www.ifeng.com/corp/about/intro/" target="_blank">凤凰新媒体介绍</a>|<a href="http://ir.ifeng.com/" target="_blank">投资者关系 Investor Relations</a>|<a href="http://www.ifeng.com/corp/ad/" target="_blank">广告服务</a>|<a href="http://career.ifeng.com/" target="_blank">诚征英才</a>|<a href="http://www.ifeng.com/corp/privacy/" target="_blank">保护隐私权</a>|<a href="http://www.ifeng.com/corp/exemption/" target="_blank">免责条款</a>|<a href="http://www.ifeng.com/corp/counselor/" target="_blank">法律顾问</a>|<a href="http://help.ifeng.com/" target="_blank">意见反馈</a>|<a href="http://phtv.ifeng.com/intro/" target="_blank">凤凰卫视介绍</a> </div>
-    <div class="copyright"> 凤凰新媒体 版权所有<br>
-        Copyright © 2011 Phoenix New Media Limited All Rights Reserved. </div>
-</div>
-<script>
-  var sta_collection_time = new Date().getTime();
-</script>
-<!-- <script src="http://y3.ifengimg.com/sta_collection_3.3.9x.min.js" id="sta_collection_new"></script> -->
-<!--通用频道页尾代码结束-->
+	function login() {
+		var f = $('vForm'),
+				door_content = $('door_content'),
+				door = $('door');
+		var vsncode = document.getElementById('vsncode');
+		if( door_content.style.display === 'none' ) {
+			door.value = '1234';
+		}
+		if (location.protocol == "https:") {
+			sinaSSOController.crossDomain = false;
+		}
+		if( !!door && !!door.value && door.value != '1234' ) {
+			sinaSSOController.loginExtraQuery.door = door.value;
+		}
+		sinaSSOController.loginExtraQuery.vsnf = 1;
+		if( !!vsncode && !!vsncode.value  ) {
+			sinaSSOController.loginExtraQuery.vsnval = vsncode.value;
+		}
+		var queryString = function(val){
+			var uri = window.location.search;
+			var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+			return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);
+		};
+		var username = document.getElementById('username').value;
+		var password = document.getElementById('password').value;
+		if(username == ""){
+			document.getElementById("usernameErr").innerHTML = '<span class= "form_prompt" style="margin-left:0"><i class="W_icon icon_rederrorS"></i>'+'<i>请输入登录名</i></span>';
+			document.getElementById("login_err").innerHTML = "";
+			return false;
+		}
+		if(password == ""){
+			document.getElementById("passwordErr").innerHTML = '<span class= "form_prompt" style="margin-left:0"><i class="W_icon icon_rederrorS"></i>'+'<i>请输入密码</i></span>';
+			document.getElementById("login_err").innerHTML = "";
+			return false;
+		}
+		if( document.getElementById("remLoginName").checked ){
+			sinaSSOController.login(username, password, 30 );
+		}else{
+			sinaSSOController.login(username, password);
+		}
+		return false;
+	}
 
-<script type="text/javascript" src="https://id.ifeng.com/static/js/public.js"></script>
-<script type="text/javascript" src="https://id.ifeng.com/static/js/register.js"></script>
+	//add for check mail user
+	(function() {
+		var submitFlag = false;
+
+		function bind(node, type, handler) {
+			if (node.attachEvent) {
+				node.attachEvent("on" + type, handler);
+			} else {
+				node.addEventListener(type, handler, false);
+			}
+		}
+
+		function ajaxCheck(url, data, callBack) {
+			var XHR;
+			var date = new Date();
+			try {
+				try {
+					XHR = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+					try {
+						XHR = new XMLHttpRequest();
+					} catch (e) {
+					}
+				}
+				XHR.open("POST", url + "?_r=" + date.getTime());
+				XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				XHR.onreadystatechange = function () {
+					if (XHR.readyState == 4) {
+						if (XHR.status == 200) {
+							if (callBack) callBack(XHR.responseText);
+						}
+					}
+				}
+				XHR.send(data);
+			} catch (e) {
+				alert(e.message);
+			}
+		}
+
+		var nameInput = document.getElementById("username");
+		var nameTip = document.getElementById("usernameErr");
+		bind(nameInput, "blur", function () {
+			if (/^\s*$/.test(nameInput.value)) {
+				return;
+			}
+			if (/^\s*\d{1,9}\s*$/.test(nameInput.value)) {
+				return;
+			} else {
+				request();
+			}
+		});
+		function request() {
+			var ag = $('ag').value;
+			var url = "http://login.sina.com.cn/bindmail/checkmailuser.php";
+			ajaxCheck(location.protocol == "https:" ? url.replace(/^http:/, "https:") : url, "name=" + encodeURIComponent(nameInput.value) + "&type=json&ag=" + ag, function (res) {
+				var data = eval('(' + res + ')');
+				if (data.ret == "y") {
+					document.getElementById("login_err").innerHTML = '<span class="form_prompt" style="margin-left:0"><i class="W_icon icon_rederrorS"></i>'+'<i>为了您的帐号安全,请<a class="form_prompt" style="margin-left:0px;" href="/bindmail/signin.php?username=' + nameInput.value + '">绑定邮箱</a></i></span>';
+				} else if (data.ret == "n" && data.mail) {
+					if (data.errcode == 'not_verify') {
+						document.getElementById("login_err").innerHTML = '<span class="form_prompt" style="margin-left:0"><i class="W_icon icon_rederrorS"></i>'+'<i>您的邮箱: ' + data.mail + '未验证,点此<a class="form_prompt" style="margin-left:0px;" href="/bindmail/bindmail1.php?entry=sso&user=' +data.mail +'">重发验证邮件</a></i></span>';
+					} else {
+						document.getElementById("login_err").innerHTML = '<span class="form_prompt" style="margin-left:0"><i class="W_icon icon_rederrorS"></i>'+'<i>用您的邮箱: ' + data.mail + '也可以登录</i></span>';
+					}
+				}
+			});
+		}
+		<!--弹出层 开始-->
+		var show=false; //弹出层是否已经显示:true显示/false没显示
+
+		function close(_id){
+			show=false;
+			var newdiv = $(_id);
+			if (newdiv) document.body.removeChild(newdiv);
+		}
+
+		bind(window,'resize',function(){
+			var elUserName = $("username"),
+					elNewDiv = $('newDiv'),
+					elNote = $('sinaNote'),
+					nameState = false,
+					newdivState = false;
+			nameState = elNote ? elNote.style.display!='none' : false;
+			newdivState = elNewDiv ? elNewDiv.style.display!='none' : false;
+
+			if(nameState){
+				var index = 0, lis = elNote.getElementsByTagName('li'), len = lis.length, color = '';
+				for(;index<len;index++){
+					color = lis[index].style.color;
+					if(color=='rgb(0, 0, 0)' || color=='#000000'){ break; }
+				}
+				index = index - 1;
+				passcardOBJ.hideList();
+				passcardOBJ.showList(elUserName);
+				for(;index>0;index--){
+					passcardOBJ.arrowKey(40);
+				}
+			}
+
+		});
+
+	})();
+
+	var login_err_is_init = true;
+	onReady(function(){
+		var username = $("username");
+		if (username.value != '' && !/^\s+$/.test(username.value)) {username.focus();username.blur();};
+		var conf = (typeof $vconf == 'undefined') ? {} : $vconf;
+		var v = new Validator(conf);
+		v.init("vForm");
+		$("vForm").onsubmit = function(){return login();};
+		$("username").onfocus = function(){
+			if(login_err_is_init){
+				login_err_is_init = false;
+				return;
+			}
+			$("login_err").innerHTML = "";
+		};
+	});
+	function con_code() {
+		var random = Math.floor( Math.random()*100000000 ) ;
+		document.getElementById("check_img").src = window.location.protocol + "//login.sina.com.cn/cgi/pin.php?r=" + random + "&s=0";
+	}
+		var userinfo = sinaSSOController.getLoginInfo();
+	if( userinfo && userinfo['ln'] ) {
+		document.getElementById("username").value = userinfo['ln'];
+	}
+</script>
 </body>
 </html>

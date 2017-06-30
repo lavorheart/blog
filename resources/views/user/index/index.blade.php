@@ -4,22 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="庞祝君_凤凰博客,凤凰博报,凤凰网,观察家,时评,财经,凤凰名人,你周刊,台湾博客">
 <meta name="description" content="庞祝君_凤凰博客,多少性诱惑能守住良知？,谁说性生活是最大的政治,留守妻子竟如此对我虐待,女儿给战残老爸过八一节,嫁过三个男人这样过日子">
-<link href="http://blogfile.ifeng.com/uploadfiles/css/basic.css" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/user/css/basic.css') }}" rel="stylesheet" type="text/css" />
 <!--
 <script type="text/javascript" src="http://blogfile.ifeng.com/uploadfiles/scripts/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="http://blogfile.ifeng.com/uploadfiles/scripts/common-1.0.js"></script>
+<script type="text/javascript" src="http://,file.ifeng.com/uploadfiles/scripts/common-1.0.js"></script>
 <script type="text/javascript" src="http://blogfile.ifeng.com/uploadfiles/scripts/layer-1.0.js?v=110"></script>
 <script type="text/javascript" src="http://blogfile.ifeng.com/uploadfiles/scripts/user_home-1.1.js"></script>
 <script src="http://m1.ifengimg.com/ifeng/sources/inice_v1.js"></script>
  -->
-<script type="text/javascript" src="http://y2.ifengimg.com/a/2016/0310/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="http://y2.ifengimg.com/a/2016/0310/common-1.0.js"></script>
-<script type="text/javascript" src="http://y2.ifengimg.com/a/2016/0310/layer-1.0.js"></script>
-<script type="text/javascript" src="http://y2.ifengimg.com/a/2016/0310/user_home-1.1.js"></script>
-<script type="text/javascript" src="http://h0.ifengimg.com/20150625/fa.min.js"></script>
-<script type="text/javascript" src="http://y2.ifengimg.com/a/2016/0310/inice_v1.js"></script>
-<script type="text/javascript" src="http://y1.ifengimg.com/commonpage/2015/0831/public_login.js"></script>
-<script type="text/javascript" src="http://y1.ifengimg.com/blognew/js/150916/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{ asset('/user/js/jquery-1.7.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/common-1.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/layer-1.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/user_home-1.1.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/fa.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/inice_v1.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/public_login.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/user/js/jquery.cookie.js') }}"></script>
 <title>IT技术交流</title>
 <style>
 body{ margin:0; padding:0; font-size:12px; font-family:"宋体";}
@@ -32,7 +32,7 @@ form{ margin:0; padding:0;}
 .blogIfNavBox .navL{ float:left; width:300px;line-height:22px; padding:7px 0 0}
 .blogIfNavBox .navR{ float:right; width:580px; padding:7px 0 0; text-align:right}
 .blogIfBtn{ width:80px; height:16px; border:1px solid #819BB4; font-size:12px;}
-.blogIfBtn2{ background:url('http://blogfile.ifeng.com/uploadfiles/theme/images/login_blogIf.gif') no-repeat; width:51px; height:20px; text-align:center; line-height:20px; border:0; font-weight:bold}
+.blogIfBtn2{ background:url('./image/1.gif') no-repeat; width:51px; height:20px; text-align:center; line-height:20px; border:0; font-weight:bold}
 .blofIf_pad{ padding-top:7px;}
 .blofIf_blue,.blofIf_blue a{ color:#004276;}
 </style>
@@ -40,7 +40,7 @@ form{ margin:0; padding:0;}
 <body>
 <div class="blogIfNav">
     <div class="blogIfNavBox">
-        <div class="navL" style="width:350px"><a href="http://blog.ifeng.com/" target="_blank"><img src="./image/2.jpg" align="absmiddle" style="margin-bottom:4px" /></a>&nbsp;&nbsp;<a href="http://www.ifeng.com/" target="_blank"><span style="color:#BA2636;">宇宙网</span></a>&nbsp;&nbsp;<img src="http://img.ifeng.com/tres/pub_res/final_image/websj.gif" />&nbsp;<a target="_blank" href="http://3g.ifeng.com/3g/blog.html"><span style="color:#BA2636;">手机宇宙网</span></a></div>
+        <div class="navL" style="width:350px"><a href="http://blog.ifeng.com/" target="_blank"><img src="/user/image/2.jpg" align="absmiddle" style="margin-bottom:4px" /></a>&nbsp;&nbsp;<a href="http://www.ifeng.com/" target="_blank"><span style="color:#BA2636;">宇宙网</span></a>&nbsp;&nbsp;<img src="http://img.ifeng.com/tres/pub_res/final_image/websj.gif" />&nbsp;<a target="_blank" href="http://3g.ifeng.com/3g/blog.html"><span style="color:#BA2636;">手机宇宙网</span></a></div>
         <div class="navR" id="navR_judge">
         <!--未登录状态 -->
             <form id="login_form" target="hiddenFrm">
@@ -73,16 +73,16 @@ form{ margin:0; padding:0;}
 </div>
 <iframe name="hiddenFrm" id="hiddenFrm" width="0" height="0" frameborder="0" style="display:none;"></iframe>
 <span id="unread_number" style="display:none;"></span>
-<link href="http://blogfile.ifeng.com/uploadfiles/theme/css/blog_new.css?t=20120511" rel="stylesheet" type="text/css" />
-<link href="http://blogfile.ifeng.com/uploadfiles/theme/tpl_69/theme.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="http://blogfile.ifeng.com/uploadfiles/css/blog_publish.css?v=10101010122" />
+<link href="/user/css/blog_new.css" rel="stylesheet" type="text/css" />
+<link href="{{ asset('/user/css/theme.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('/user/css/blog_publish.css') }}" />
 <script type="text/javascript">
 var _vip_bloger_ad = 920156;
 </script>
 <!--博客头部样式begin-->
 <div id="common_person_blogtitle">
     <div id="title01">
-        <a href="http://pangzhujun12345.blog.ifeng.com">IT技术交流</a>
+        <a href="./head.html">IT技术交流</a>//////////////////////////////
     </div>
     <div id="title02">
         微信公众号PHP你懂的<br><a href="http://www.xdl.com">http://www.xdl.com</a>
@@ -97,7 +97,7 @@ var _vip_bloger_ad = 920156;
             <li ><a href="/guestbooks/920156.html" onclick="clearNewTip()">留言</a></li>
                     </ul>
 
-<span><a href="/rss/920156.xml" target="_blank"><img src="http://blogfile.ifeng.com/uploadfiles/theme/images/nav_rss.gif" title="订阅" border="0"/></a></span>
+<span><a href="/rss/920156.xml" target="_blank"><img src="{{ asset('/user/image/2.gif') }}" title="订阅" border="0"/></a></span>
 </div>
     <div class="clear"></div>
 </div>
@@ -151,7 +151,7 @@ var staticdata = '[{"itemid":"47251221","uid":"920156","catid":"30","username":"
                 <input type="hidden" id="hiddennuid" value="920156">
                 <p><img src="./image/1.jpg" name="user_head" width="78" height="78" border="0" align="left" id="user_head"/></p>
                 <p><strong>
-                 <img src="http://blogfile.ifeng.com/uploadfiles/theme/images/common/vip.jpg" />                                    庞祝君
+                 <img src="{{ asset('/user/image/vip.jpg') }}" />                                   达伽马君
                                 </strong></p>
                 <p>只谈IT。不谈感情。发宇宙网文字皆原创。微信公众号 php你懂的。情感倾诉QQ1272957176。</p>
             </div>
@@ -207,12 +207,12 @@ var staticdata = '[{"itemid":"47251221","uid":"920156","catid":"30","username":"
                 <ul>
                     <h2>·归类</h2>
                     <li>全部分类</li>
-                                                    <li><a href="/category/920156_100839.html">时评</a></li>
+                                    <li><a href="/category/920156_100839.html">时评</a></li>
                                     <li><a href="/category/920156_100840.html">PHP</a></li>
                                     <li><a href="/category/920156_100903.html">LARAVEL</a></li>
                                     <li><a href="/category/920156_100904.html">CMS</a></li>
-                                                </ul>
-                <div class="clear"></div>
+                </ul>
+             <div class="clear"></div>
               
                 <script type="text/javascript">
                     function displayYear(year) {
@@ -276,20 +276,20 @@ var staticdata = '[{"itemid":"47251221","uid":"920156","catid":"30","username":"
 .chaFotNav li{list-style:none}
 .chaFotNav{width:998px;border:1px #d9d9d9 solid;margin:0 auto;font-family:simsun,Arial;font-size:12px;clear:both;background:#fff}
 .chaFotNav .endNList{width:772px;float:left;padding:8px 0px}
-.chaFotNav .endNList li{padding:0px 4px 0px 5px;background:url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/zxicon_26.gif) right center no-repeat;float:left}
+.chaFotNav .endNList li{padding:0px 4px 0px 5px;background:url({{ asset('/user/image/zxicon_26.gif')}}) right center no-repeat;float:left}
 .chaFotNav .endNList li a{color:#2b2b2b;text-decoration:none}
 .chaFotNav .endNList li a:hover{text-decoration:underline}
 .chaFotNav .navFocus{width:200px;padding:5px 0 0 0px;margin:0 0px 0 0;color:#ba2636;line-height:18px;float:right}
 .chaFotNav .navFocus a{line-height:18px;text-decoration:none}
 .chaFotNav .navFocus a:hover{text-decoration:underline}
 .chaFotNav .navV a,.chaFotNav .navVIP a,.chaFotNav .ifengPlay a,.chaFotNav .tvPlay a,.chaFotNav .navWap a,.chaFotNav .navTmp a{color:#ba2636}
-.chaFotNav .navV{width:37px;background:url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/nav0416_14.gif) no-repeat 1px 4px;padding:0 0 0 17px;float:left}
+.chaFotNav .navV{width:37px;background:url({{ asset('/user/image/nav0416_14.gif')}}) no-repeat 1px 4px;padding:0 0 0 17px;float:left}
 .chaFotNav .navTmp{width:37px;float:left}
 .chaFotNav .ifengPlay{width:37px;float:left}
-.chaFotNav .tvPlay{width:55px;background:url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/nav0416_17.gif) no-repeat 0px 3px;padding:0 0 0 15px;float:left}
-.chaFotNav .navWap{width:30px;background:url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/nav0416_06.gif) no-repeat 0px 2px;padding:0 0 0 11px;float:left}
+.chaFotNav .tvPlay{width:55px;background:url({{ asset('/user/image/nav0416_17.gif')}}) no-repeat 0px 3px;padding:0 0 0 15px;float:left}
+.chaFotNav .navWap{width:30px;background:url({{ asset('/user/image/nav0416_06.gif')}}) no-repeat 0px 2px;padding:0 0 0 11px;float:left}
 .chaFotNav .nextTop{width:40px;height:20px;padding:7px 0 0 3px;border-left:1px #d9d9d9 solid;float:left}
-.chaFotNav02{width:1000px;height:21px;margin:0 auto;background:#fff url(http://img.ifeng.com/tres/TemplateRes/26110/26110/images/news_v5/icon02_04.gif) repeat-x bottom;font-size:0px;line-height:0px;clear:both}
+.chaFotNav02{width:1000px;height:21px;margin:0 auto;background:#fff url({{ asset('/user/image/icon02_04.gif')}}) repeat-x bottom;font-size:0px;line-height:0px;clear:both}
 .chaFooter{color:#000;width:1000px;height:72px;margin:0 auto;clear:both;text-align:center;line-height:24px;font-family:Arial,simsun;font-size:12px;background:#fff;padding-top:8px}
 .chaFooter a{color:#000;text-decoration:none}
 .chaFooter a:hover{color:#000;text-decoration:underline}

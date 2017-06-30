@@ -1,0 +1,214 @@
+﻿@charset "utf-8";
+
+
+/*文字色*/
+
+/* 基本正文字色（博文正文文字默认颜色） */
+body{color:#464646;}
+/* 基本链接字色（默认链接） */
+a,
+a:link,
+a:visited,
+a:hover,
+.SG_more{color:#094382}
+/* A类文字色 （同默认链接，特殊情况下定义样式用） */
+.SG_txta{color:#094382}
+/* B类文字色（举例：正文标题下面的标签、分类） */
+.SG_txtb{color:#88a5a8}
+/* C类文字色（举例：正文标题后面的时间） */
+.SG_txtc{color:#88a5a8}
+/*  提示性文字色A（红色，一般不处理） */
+.SG_clewtxta{color: #FF0000}
+/*  提示性文字色B（橙色，一般不处理） */
+.SG_clewtxtb{color: #FF6600}
+/* A类链接色（同body色即可） */
+.SG_linka a:link,
+.SG_linka a:visited,
+.SG_linka a:hover,
+a.SG_linka:link,
+a.SG_linka:visited,
+a.SG_linka:hover{color: #464646}
+/* B类链接色（同C类文字色即可） */
+.SG_linkb a:link,
+.SG_linkb a:visited,
+.SG_linkb a:hover,
+a.SG_linkb:link,
+a.SG_linkb:visited,
+a.SG_linkb:hover{color:#88a5a8}
+
+/* 边框颜色（内容区投票等模块）*/
+.borderc{ border-color: #77b6d6; }
+
+
+/* 博客标题文字色*/
+.sinabloghead .blogtitle,
+.sinabloghead .blogtitle a,
+.sinabloghead .blogtitle a:link,
+.sinabloghead .blogtitle a:visited,
+.sinabloghead .blogtitle a:hover,
+.sinabloghead .blogtitle .CP_a_fuc{color:#f0ffed; }
+.sinabloghead .bloglink,
+.sinabloghead .bloglink a,
+.sinabloghead .bloglink a:link,
+.sinabloghead .bloglink a:visited,
+.sinabloghead .bloglink a:hover{ color: #f0ffed;}
+.sinabloghead .bloglink .CP_a_fuc{color:#f0ffed;}
+
+/* 导航文字色 */
+.sinabloghead .blognav  a,
+.sinabloghead .blognav  a:link,
+.sinabloghead .blognav  a:visited,
+.sinabloghead .blognav  a:hover{ color: #002b61}
+/*导航选中状态*/
+.sinabloghead .blognav a.on,
+.sinabloghead .blognav a.on:link,
+.sinabloghead .blognav a.on:visited,
+.sinabloghead .blognav a.on:hover{color:#002b61;}
+
+/* 组件标题颜色 */
+.SG_connHead .title,
+.SG_connHead .title a,
+.SG_connHead .title a:link,
+.SG_connHead .title a:visited,
+.SG_connHead .title a:hover,
+.SG_connHead .tip,
+.SG_connHead .tip a,
+.SG_connHead .tip a:link,
+.SG_connHead .tip a:visited,
+.SG_connHead .tip a:hover,
+.SG_connHead .edit,
+.SG_connHead .edit a,
+.SG_connHead .edit a:link,
+.SG_connHead .edit a:visited,
+.SG_connHead .edit a:hover,
+.SG_connHead .tip_r,
+.SG_connHead .tip_r a,
+.SG_connHead .tip_r a:link,
+.SG_connHead .tip_r a:visited,
+.SG_connHead .tip_r a:hover,
+.SG_connHead .fontSize,
+.SG_connHead .fontSize a,
+.SG_connHead .fontSize a:link,
+.SG_connHead .fontSize a:visited,
+.SG_connHead .fontSize a:hover,
+.menuList ul li.current,
+.menuList ul li.current a,
+.menuList ul li.current a:link,
+.menuList ul li.current a:visited,
+.menuList ul li.current a:hover,
+.menuList ul li.current em.SG_txtc{ color:#428094}
+
+/* 标准尾文字色 */
+.sinablogfooter,
+.sinablogfooter a:link,
+.sinablogfooter a:visited,
+.sinablogfooter a:hover{ color:#4b6675}
+
+/* 按钮文字颜色 */
+a.SG_aBtn,
+a.SG_aBtn:link,
+a.SG_aBtn:visited{color:#094382; }
+
+/* 页签链接颜色（非选中）*/
+.SG_tag ul li span a,
+.SG_tag ul li span a:link,
+.SG_tag ul li span a:visited,
+.SG_tag ul li span a:hover{ color:#878787;}
+
+/***********************************************************************/
+/* 背景图*/
+
+/* 背景 */
+body{
+background-color: #71c0e7;
+
+/*循环背景图*/
+ background-image: url(../images/sinablogmid.jpg);
+ background-position:center top;
+}
+
+/* 头图 (背景、高度)*/
+.sinablogb{background-image: url(../images/sinablogb.jpg); }
+.sinabloghead{height:265px;}
+
+/* 尾图 (背景、高度) */
+.sinabloga{ background-image:none;}
+.sinablogfooter{ height:257px;}
+
+/* 标题 (位置)*/
+.sinabloghead .blogtoparea{ top:32%; left:56px;}
+
+/* 导航 (背景、位置、大小、间距)*/
+.sinabloghead .blognav{top:72%; left:76px; width:346px; height:50px;}
+.sinabloghead .blognav .blognavInfo{ top:8px;*top:10px;left:20px;}
+/* 针对ie6下的滤镜要用绝对路径*/
+.sinabloghead .blognav .blognavBg{  background-image:url(../images/blognavbg.png);
+_background-image:none;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='http://simg.sinajs.cn/blog7newtpl/image/16/16_10/images/blognavbg.png');}
+/* 导航文字间隔线*/
+.sinabloghead .blognav span{ padding:0 14px;*padding:0 13px;background-image:url(../images/sg_newsp.png);}
+
+/* gif图用于当组件透明时，ie6下不透明的效果 */
+/* 组件标题栏 */
+.SG_colW95 .SG_connHead,
+.SG_colW73 .SG_connHead,
+.SG_colW51 .SG_connHead,
+.SG_colW21 .SG_connHead,
+.blogads .ad_head{ _background-image: url(../images/modelhead.gif);background-image: url(../images/modelhead.png); }
+/* 组件背景 */
+.SG_colW95 .SG_connBody,
+.SG_colW73 .SG_connBody,
+.SG_colW51 .SG_connBody,
+.SG_colW21 .SG_connBody,
+.blogads .ad_body{ _background-image: url(../images/modelbody.gif);background-image: url(../images/modelbody.png);}
+/* 组件底边 */
+.SG_colW95 .SG_connFoot,
+.SG_colW73 .SG_connFoot,
+.SG_colW51 .SG_connFoot,
+.SG_colW21 .SG_connFoot,
+.blogads .ad_foot{ _background-image: url(../images/modelfoot.gif); background-image: url(../images/modelfoot.png);}
+
+/* 实线&虚线 */
+.SG_j_line,
+.SG_j_line1   { background-image: url(../images/sg_line.gif);}
+.SG_j_linedot,
+.SG_j_linedot1{ background-image: url(../images/sg_linedot.gif);}
+
+/* 小圆点 */
+.SG_dot{ background-image:url(../images/sg_dot.gif);}
+
+/* 页签 */
+.SG_tag,
+.SG_tag ul li,
+.SG_tag ul li span.tagR,
+.SG_tag ul li.current,
+.SG_tag ul li.current span.tagR{background-image:url(../images/sg_newsp.png); }
+
+/* 二级菜单 (选中状态)*/
+.menuList ul li.current,
+.menuList ul li.current .menuCell_bot{background-image:url(../images/sg_newsp.png);}
+
+/* 评论条底图 */
+.allComm .allCommTit{ background-image:url(../images/sg_newsp.png);}
+
+/* 按钮 背景 */
+a.SG_aBtn,a.SG_aBtn cite{ background-image: url(../images/sg_newsp.png);}
+
+/***********************************************************************/
+
+/* 恢复浮层按钮颜色 */
+a.SG_aBtnB,
+a.SG_aBtnB cite{ color:#333399; background-image: url(../images/sg_btnb.png); _background-image: url(../images/sg_btnb.gif);}
+a.SG_aBtn_dis,
+a.SG_aBtn_dis cite{ background-image:url(../images/sg_btn_dis.png);_background-image:url(../images/sg_btn_dis.gif);}
+
+/* 预留商业皮肤相关样式、克隆按钮、商业logo等 */
+.sinabloghead .adsarea{ display:block; right:0; bottom:50px; position:absolute; left:745px; top:165px}
+.sinabloghead .adsarea .pic{display:block; position:absolute; left:0px; top:28px}
+.sinabloghead .adsarea .link{ color:#FFFFFF;position:absolute; top:0px;}
+.sinabloghead .adsarea .link a,
+.sinabloghead .adsarea .link a:link,
+.sinabloghead .adsarea .link a:visited,
+.sinabloghead .adsarea .link a:hover{color: #fff; text-decoration:underline}
+
+

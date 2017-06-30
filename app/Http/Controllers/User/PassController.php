@@ -10,6 +10,6 @@ class PassController extends Controller
     //
     public function pass()
     {
-    	return view('User.pass.pass');
+    	return view('user.pass.pass');
     }
 }
