@@ -15,45 +15,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-//前台主页
-Route::get('/user/index','User\IndexController@index');
+// 前台登录限制控制组
+Route::group(['middleware'=>'userlogin'],function(){
 
+	//前台主页
+	Route::get('/user/index','User\IndexController@index')->middleware('userlogin');
+
+	
+});
+// 验证码
+Route::get('/kit/captcha/{tmp}','User\KitController@captcha');
 //前台登录页
 Route::get('/user/login','User\LoginController@login');
+// 前台执行登录
+Route::post('/user/dologin','User\LoginController@dologin');
+// 前台退出
+Route::get('/user/logout','User\LoginController@logout');
 
 //前台注册页
-Route::get('user/zhuce','User\ZhuceController@zhuce');
+Route::get('/user/register','User\RegisterController@register');
+//前台执行注册
+Route::post('/user/register','User\RegisterController@insert');
+
+
+
+
+//前台主页方法二
+// Route::get('/user/index','User\IndexController@index')->middleware('userlogin');
+
+
 
 //前台密码找回
 Route::get('user/pass','User\PassController@pass');
 
-=======
-//前台登录页
-Route::get('/user/login','User\LoginController@login');
-Route::post('/user/login','User\LoginController@insert');
-
-//前台注册页
-Route::get('user/register','User\RegisterController@register');
-
-
-//前台主页
-Route::get('/user/index','User\IndexController@index');
-
-
-
-//前台密码找回
-Route::get('user/pass','User\PassController@pass');
-
->>>>>>> 15049180e44f98c036e91600f443db97c9e34ee2
 //前台用户中心
 Route::get('user/center','User\CenterController@center');
 
 //前台详情
 Route::get('user/detail','User\DetailController@detail');
 
-//前台个人主页
-Route::get('/user/one','User\OneController@one');
 
 // 后台主页
 Route::get('/admin/index', 'Admin\IndexController@index');

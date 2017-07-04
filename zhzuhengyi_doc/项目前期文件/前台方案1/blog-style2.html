@@ -54,7 +54,41 @@ jQuery.noConflict()(function($){
 </head>
 
 <body>
-
+ @if(session('info'))
+     <div id="wrapper-home">
+            <table style="color:green" >
+                <tr>
+                    <td colspan="2" align="center">
+                        {{ session('info')}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/user/images/photo/{{ session('master')->photo }}" width="40">                     
+                    </td>
+                    <td>
+                        {{ session('master')->nickName}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        等级:{{ session('master')->level}}
+                    </td>
+                    <td>
+                        积分:{{ session('master')->num}}分
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">个人中心</a>
+                    </td>
+                    <td>
+                        <a href="{{ url('/user/logout')}}">退出</a>
+                    </td>
+                </tr>
+            </table>
+    </div>
+  @endif
 <!-- START MENU SECTION -->
 <div id="top-line"></div>
 <div id="menu-bar">
