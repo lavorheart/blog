@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/analytics.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redis在windows下安装过程 - 坚持的孤独 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-CodingLife.css">
+<link type="text/css" rel="stylesheet" href="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/173894.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-CodingLife-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/M-LittleBird/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/M-LittleBird/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/M-LittleBird/wlwmanifest.xml">
+<script src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'M-LittleBird', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/M-LittleBird/"><img id="blogLogo" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/M-LittleBird/">M_Little_Bird</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/M-LittleBird/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/M-LittleBird/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/M-LittleBird/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 22&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 296</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/M-LittleBird/p/5902850.html">Redis在windows下安装过程</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><font size="4"><strong>一、下载windows版本的Redis</strong></font></p> <p><font size="3">去官网找了很久，发现原来在官网上可以下载的windows版本的，现在官网以及没有下载地址，只能在github上下载，官网只提供linux版本的下载</font></p> <p><font size="3">官网下载地址：<a title="http://redis.io/download" href="http://redis.io/download">http://redis.io/download</a></font></p> <p>github下载地址：<a title="https://github.com/MSOpenTech/redis/tags" href="https://github.com/MSOpenTech/redis/tags">https://github.com/MSOpenTech/redis/tags</a></p> <p><font size="4"><strong>二、安装Redis</strong></font></p> <p><font size="3">1.这里下载的是Redis-x64-3.2.100版本，我的电脑是win7 64位，所以下载64位版本的，在运行中输入cmd，然后把目录指向解压的Redis目录。</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113324481-1911007174.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113325981-1281380353.png" width="670" height="440" border="0"></a></p> <p><font size="3">2、启动命令</font></p> <p><font size="3">redis-server redis.windows.conf，出现下图显示表示启动成功了。</font></p> <p>&nbsp;</p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113328168-1037459915.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113330574-845670085.png" width="667" height="438" border="0"></a></p> <h4><font size="4"><strong>三、设置Redis服务</strong></font></h4> <p><font size="3">1、由于上面虽然启动了redis，但是只要一关闭cmd窗口，redis就会消失。所以要把redis设置成windows下的服务。</font></p> <p><font size="3">也就是设置到这里，首先发现是没用这个Redis服务的。</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113333387-89856772.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113335199-1382315421.png" width="635" height="456" border="0"></a></p> <p><font size="3">2、设置服务命令</font></p> <p>redis-server --service-install redis.windows-service.conf --loglevel verbose</p> <h4><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113337668-559453583.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113338965-1626955828.png" width="734" height="481" border="0"></a></h4> <p><font size="3">输入命令之后没有报错，表示成功了，刷新服务，会看到多了一个redis服务。</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113341074-854105676.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113343184-1672706333.png" width="794" height="570" border="0"></a></p> <p><font size="3">3、常用的redis服务命令。</font></p> <p><font size="3">卸载服务：redis-server --service-uninstall</font></p> <p><font size="3">开启服务：redis-server --service-start</font></p> <p><font size="3">停止服务：redis-server --service-stop</font></p> <p><font size="3">4、启动服务</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113344965-984892634.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113346559-1291084867.png" width="798" height="524" border="0"></a></p> <p><font size="3">5、测试Redis</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113348184-986936311.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113349668-1075805574.png" width="758" height="498" border="0"></a></p> <p><font size="3">安装测试成功。</font></p> <p><font size="3">&nbsp;&nbsp; 这里只是做简单的安装，部署服务使用，更深入的使用可以去redis中文网看看 <a title="http://www.redis.net.cn/" href="http://www.redis.net.cn/">http://www.redis.net.cn/</a> 博客园也有很多深入使用方法，由于我的博客系统需要用到，做个抛砖引玉吧。</font></p> <p><font size="3">&nbsp;&nbsp; 在下载的解压包里面有一份文档，有详细的说明，</font></p> <p><a href="http://images2015.cnblogs.com/blog/596198/201609/596198-20160924113351777-244448314.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" alt="image" src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/596198-20160924113353715-1398104768.png" width="687" height="534" border="0"></a></p> <p><font size="3">有什么纰漏之处，请大家多多指教，谢谢。</font></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5902850,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('b40df5c3-5f73-e311-8d02-90b11c0b17d6');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/M-LittleBird/" target="_blank"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/M-LittleBird/">坚持的孤独</a><br>
+            <a href="http://home.cnblogs.com/u/M-LittleBird/followees">关注 - 31</a><br>
+            <a href="http://home.cnblogs.com/u/M-LittleBird/followers">粉丝 - 110</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('b40df5c3-5f73-e311-8d02-90b11c0b17d6');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5902850,'Digg')">
+        <span class="diggnum" id="digg_count">5</span>
+    </div>
+    <div class="buryit" onclick="votePost(5902850,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/M-LittleBird/p/5902039.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/M-LittleBird/p/5902039.html" title="发布于2016-09-23 23:13">从零开始，搭建博客系统MVC5+EF6搭建框架（2），测试添加数据、集成Autofac依赖注入</a><br><a href="http://www.cnblogs.com/M-LittleBird/p/5907742.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/M-LittleBird/p/5907742.html" title="发布于2016-09-26 01:08">从零开始，搭建博客系统MVC5+EF6搭建框架（3），添加Nlog日志、缓存机制（MemoryCache、RedisCache）、创建控制器父类BaseController</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-09-24 11:34</span> <a href="http://www.cnblogs.com/M-LittleBird/">坚持的孤独</a> 阅读(<span id="post_view_count">15466</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5902850" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5902850);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=173894,cb_entryId=5902850,cb_blogApp=currentBlogApp,cb_blogUserGuid='b40df5c3-5f73-e311-8d02-90b11c0b17d6',cb_entryCreatedDate='2016/9/24 11:34:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3711562" class="layer">#1楼</a><a name="3711562" id="comment_anchor_3711562"></a><span id="comment-maxId" style="display:none;">3711562</span><span id="comment-maxDate" style="display:none;">2017/6/10 18:29:18</span>  <span class="comment_date">2017-06-10 18:29</span> <a id="a_comment_author_3711562" href="http://www.cnblogs.com/yincan2014/" target="_blank">o好久不见o</a> <a href="http://msg.cnblogs.com/send/o%E5%A5%BD%E4%B9%85%E4%B8%8D%E8%A7%81o" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3711562" class="blog_comment_body">不错，学习了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3711562,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3711562,'Bury',this)">反对(0)</a></div><span id="comment_3711562_avatar" style="display:none;">http://pic.cnblogs.com/face/591421/20151014151042.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://cloud.tencent.com/developer/labs?fromSource=gwzcw.241259.241259.241259" target="_blank">【免费】从零开始学编程，开发者专属实验平台免费实践！</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="http://click.aliyun.com/m/19236/" target="_blank"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20170502163240086-1545306933.jpg" alt="阿里云B1" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/573152/" target="_blank">格力接班人之困：并非没有 而在确定</a><br> ·  <a href="http://news.cnblogs.com/n/573150/" target="_blank">百度度秘事业部总经理景鲲：DuerOS是AI时代的安卓系统</a><br> ·  <a href="http://news.cnblogs.com/n/573149/" target="_blank">共享电单车这碗温吞水，还有沸腾的可能吗？</a><br> ·  <a href="http://news.cnblogs.com/n/573148/" target="_blank">核心资产抵押给孙宏斌，贾跃亭可能只剩下一个梦</a><br> ·  <a href="http://news.cnblogs.com/n/573147/" target="_blank">小米与诺基亚达成专利合作 收购部分诺基亚专利资产</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice?source=bky" target="_blank"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20170629165247758-2056260207.png" alt="极光推广_0701" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/570194/" target="_blank">小printf的故事：什么是真正的程序员？</a><br> ·  <a href="http://kb.cnblogs.com/page/569992/" target="_blank">程序员的工作、学习与绩效</a><br> ·  <a href="http://kb.cnblogs.com/page/569056/" target="_blank">软件开发为什么很难</a><br> ·  <a href="http://kb.cnblogs.com/page/565901/" target="_blank">唱吧DevOps的落地，微服务CI/CD的范本技术解读</a><br> ·  <a href="http://kb.cnblogs.com/page/566523/" target="_blank">程序员，如何从平庸走向理想？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><a href="http://s11.flagcounter.com/more/G3y"><img src="Redis%E5%9C%A8windows%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%20-%20%E5%9D%9A%E6%8C%81%E7%9A%84%E5%AD%A4%E7%8B%AC%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/a.png" alt="Flag Counter" border="0"></a><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/M-LittleBird/">坚持的孤独</a><br>园龄：<a href="http://home.cnblogs.com/u/M-LittleBird/" title="入园时间：2014-01-02">3年6个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/M-LittleBird/followers/">110</a><br>关注：<a href="http://home.cnblogs.com/u/M-LittleBird/followees/">31</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('b40df5c3-5f73-e311-8d02-90b11c0b17d6')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="日历" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2017/06/01');return false;">&lt;</a></td><td align="center">2017年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2017/08/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td class="CalTodayDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/M-LittleBird/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html">1. 其实我就是想好好的写写代码（一个伪程序猿的独白）</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/6323147.html">2. WebApi关于配置全局返回Json数据格式时间以及命名小写</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5977992.html">3. 从零开始，搭建博客系统MVC5+EF6搭建框架（5），博客详情页、留言、轮播图管理、右侧统计博文</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5945832.html">4. 从零开始，搭建博客系统MVC5+EF6搭建框架（4）下，前后台布局实现、发布博客以及展示。</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5930001.html">5. 从零开始，搭建博客系统MVC5+EF6搭建框架（4）上,前后台页面布局页面实现，介绍使用的UI框架以及JS组件</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5907742.html">6. 从零开始，搭建博客系统MVC5+EF6搭建框架（3），添加Nlog日志、缓存机制（MemoryCache、RedisCache）、创建控制器父类BaseController</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5902850.html">7. Redis在windows下安装过程</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5902039.html">8. 从零开始，搭建博客系统MVC5+EF6搭建框架（2），测试添加数据、集成Autofac依赖注入</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5897509.html">9. 从零开始，搭建博客系统MVC5+EF6搭建框架（1），EF Code frist、实现泛型数据仓储以及业务逻辑</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5863139.html">10. [转]关于有偿提供拼图响应式后台的通知</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/M-LittleBird/tag/ASP.NET%20MVC/">ASP.NET MVC</a>(9)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/c%23/">c#</a>(2)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/%E9%9A%8F%E7%AC%94/">随笔</a>(2)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/EF/">EF</a>(1)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/oracle/">oracle</a>(1)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/Oracle10g/">Oracle10g</a>(1)</li><li><a href="http://www.cnblogs.com/M-LittleBird/tag/WebApi/">WebApi</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/M-LittleBird/archive/2017/05.html">2017年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/M-LittleBird/archive/2017/01.html">2017年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/M-LittleBird/archive/2016/10.html">2016年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/M-LittleBird/archive/2016/09.html">2016年9月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/M-LittleBird/archive/2016/08.html">2016年8月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/M-LittleBird/archive/2016/07.html">2016年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/M-LittleBird/archive/2016/06.html">2016年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/M-LittleBird/archive/2014/11.html">2014年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/M-LittleBird/archive/2014/01.html">2014年1月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_articlearchive" class="catListArticleArchive sidebar-block">
+<h3 class="catListTitle">文章档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/M-LittleBird/archives/2016/09.html" rel="nofollow">2016年9月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	47020
+	</li>
+	<li class="liRank">
+		排名 -	6309
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html#3727502">1. Re:其实我就是想好好的写写代码（一个伪程序猿的独白）</a></li>
+        <li class="recent_comment_body">楼主对自己的生活总结的很好</li>
+        <li class="recent_comment_author">--bobo_giser</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/M-LittleBird/p/5977992.html#3724046">2. Re:从零开始，搭建博客系统MVC5+EF6搭建框架（5），博客详情页、留言、轮播图管理、右侧统计博文</a></li>
+        <li class="recent_comment_body">博主你好，可以给我源码吗？</li>
+        <li class="recent_comment_author">--fuyk</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html#3723861">3. Re:其实我就是想好好的写写代码（一个伪程序猿的独白）</a></li>
+        <li class="recent_comment_body">楼主，我是你的粉。</li>
+        <li class="recent_comment_author">--xiaomeng_myx</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html#3718812">4. Re:其实我就是想好好的写写代码（一个伪程序猿的独白）</a></li>
+        <li class="recent_comment_body">楼主 加油</li>
+        <li class="recent_comment_author">--waslm</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/M-LittleBird/p/5853876.html#3715679">5. Re:ASP.NET MVC5+EF6搭建三层实例</a></li>
+        <li class="recent_comment_body">学习了</li>
+        <li class="recent_comment_author">--小兜</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/M-LittleBird/p/5902850.html">1. Redis在windows下安装过程(15466)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5855967.html">2. ASP.NET MVC中获取URL地址参数的两种写法(5879)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5853876.html">3. ASP.NET MVC5+EF6搭建三层实例(4499)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5855973.html">4. ASP.NET MVC post请求接收参数的三种方式(3773)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html">5. 其实我就是想好好的写写代码（一个伪程序猿的独白）(3306)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html">1. 其实我就是想好好的写写代码（一个伪程序猿的独白）(69)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5977992.html">2. 从零开始，搭建博客系统MVC5+EF6搭建框架（5），博客详情页、留言、轮播图管理、右侧统计博文(20)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5907742.html">3. 从零开始，搭建博客系统MVC5+EF6搭建框架（3），添加Nlog日志、缓存机制（MemoryCache、RedisCache）、创建控制器父类BaseController(20)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5897509.html">4. 从零开始，搭建博客系统MVC5+EF6搭建框架（1），EF Code frist、实现泛型数据仓储以及业务逻辑(11)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5853876.html">5. ASP.NET MVC5+EF6搭建三层实例(8)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/M-LittleBird/p/6825526.html">1. 其实我就是想好好的写写代码（一个伪程序猿的独白）(14)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5977992.html">2. 从零开始，搭建博客系统MVC5+EF6搭建框架（5），博客详情页、留言、轮播图管理、右侧统计博文(12)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5945832.html">3. 从零开始，搭建博客系统MVC5+EF6搭建框架（4）下，前后台布局实现、发布博客以及展示。(5)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5930001.html">4. 从零开始，搭建博客系统MVC5+EF6搭建框架（4）上,前后台页面布局页面实现，介绍使用的UI框架以及JS组件(5)</a></li><li><a href="http://www.cnblogs.com/M-LittleBird/p/5902850.html">5. Redis在windows下安装过程(5)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 坚持的孤独
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

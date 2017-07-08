@@ -1,0 +1,236 @@
+.vmode_coment_600
+{
+    margin: 0;
+    padding: 0;
+    font-size:12px;
+    font-family:  "arial","simsun";
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+    display: inline-block;
+    display: block;
+}
+
+.number {
+    color: #999;
+    font-family: Arial;
+    font-size: 11px;
+    _vertical-align: text-top;
+}
+.floatleft {
+    float: left;
+    /*display: inline;*/
+}
+
+.floatright {
+    float: right;
+}
+
+.aligncenter {
+    text-align: center;
+    clear: both
+}
+
+.alignright {
+    text-align: right;
+}
+
+.alignleft {
+    text-align: left;
+}
+
+.block {
+    display: block;
+}
+
+.justify {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+.break {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.fixed {
+    position: fixed;
+}
+.nobreak {
+    white-space: nowrap;
+}
+.forcewrap {
+    word-wrap: break-word;
+    text-overflow: hidden;
+    overflow: hidden;
+}
+.ellipsis{
+    display: block;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.zoom {
+    zoom: 1;
+    position: relative;
+}
+
+.clear {
+    clear: both;
+}
+
+.b {
+    font-weight: bold;
+}
+
+
+/*font
+*/
+.yahei {
+    font-family: "microsoft yahei";
+    font-size: 18px;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+.f14 {
+    font-size: 14px;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+
+
+/*color
+*/
+.g2b{
+    color:#2b2b2b;
+}
+.light {
+    color: #f00;
+}
+.highlight{
+    color:#ba2636;
+}
+.error {
+    color: #f00;
+}
+.g9{
+    color:#999;
+}
+.g6{
+    color:#666;
+}
+.g3{
+    color:#333;
+}
+/*border
+*/
+.borderNone {
+    border: none;
+}
+
+
+/*color-end*/
+/*line
+*/
+.line-cd-1 {
+    height:0;
+    font-size: 0;
+    width: 100%;
+    border-top:1px solid #CDCDCD;
+
+}
+
+.line-eb-4 {
+    height:0;
+    font-size: 0;
+    width: 100%;
+    border-top:4px solid #EBEBEB;
+}
+
+.line-black-4 {
+    height: 4px;
+    width: 100%;
+    background: #000;
+}
+
+.dot-line {
+    background: url(http://y0.ifengimg.com/newcommentpage/images/line.gif) repeat-x 0 bottom;
+}
+
+
+.lineheight-20{
+    line-height: 20px;
+}
+.lineheight-30{
+    line-height: 30px;
+}
+.lineheight-40{
+    line-height: 40px;
+}
+
+/*z-index  分级  */
+.z-9{
+    z-index:9;
+}
+.z-99{
+    z-index:99;
+}
+.z-999{
+    z-index:999;
+}
+.z-9999{
+    z-index:9999;
+}
+.z-99999{
+    z-index:99999;
+}
+
+/*todo
+/* h1-h5 ,z-index 什么场景安排
+*/
+
+
+/*icon-*/
+
+.icon-triangle-tc {
+    border-color:transparent transparent #646060 transparent;
+    border-style:dashed dashed solid dashed;
+    border-width:0 4px 5px 4px;
+    height:0 ;width:0;overflow:hidden;
+}
+.icon-triangle-bc {
+    float: right;
+    margin: 4px 0 0 1px;
+    border-color: #646060 transparent transparent transparent;
+    border-style:solid dashed dashed  dashed;
+    border-width: 4px 4px 0 4px;
+    height:0 ;width:0;overflow:hidden;
+}
+/*btn-*/
+
+/*-------------------*/
+
+
+.if-width{width:1000px;margin: 0 auto}
+.mt18{ margin-top:18px;}/*150317a*//*新增*/
+.PcNone{ display:none !important;}/*150420a*/
+.pt10{ padding-top:10px;}/*150420a*//*新增*/
+.pt50{ padding-top:50px;}/*150429a*//*新增*/
+.mtf_28{ margin-top:-21px;}/*150429a*//*新增*/
+#boxShowz{padding:2px 0px 4px 2px;}

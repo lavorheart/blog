@@ -30,7 +30,7 @@ class LoginController extends Controller
             $userdetail=\DB::table('userdetail')->where('uid',$res->id)->first();
    			// 存入session
    			session(['master'=>$userdetail]);
-   			return redirect('/user/index')->with(['info'=>'恭喜您 登录成功']);
+   			return redirect('/')->with(['info'=>'恭喜您 登录成功']);
    		}
 
    		//判断二维码
@@ -108,7 +108,7 @@ class LoginController extends Controller
    						\Cookie::queue('remember_token',$users->remember_token,10);
    					}
                   // 成功处理
-   					return redirect('/user/index')->with(['info'=>'恭喜您:登录成功!']);
+   					return redirect('/')->with(['info'=>'恭喜您:登录成功!']);
    				}else{ 
                   // 失败处理
    					return back()->with(['info'=>'该用户不存在']);

@@ -1,0 +1,7 @@
+.syntaxhighlighter .line{
+  white-space: pre!important;
+  line-height: 1.5em!important;
+}
+.syntaxhighlighter textarea{
+  line-height: 1.5em!important;
+}

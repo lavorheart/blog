@@ -1,0 +1,9 @@
+﻿body{background:#C8C8C8 url(./tpl_69.jpg) no-repeat top center;}
+#common_person_blogtitle{position:relative;width:950px;height:195px;margin:0 auto;margin-bottom:1px;}
+#common_person_blogtitle #title01{position:absolute;left:90px;top:46px;line-height:24px;font-size:20px;font-family:"黑体";font-weight:normal;}
+#common_person_blogtitle #title01 a{color:#000;}
+#common_person_blogtitle #title02{position:absolute;left:90px;top:80px;color:#000;font-size:14px;font-weight:normal;}
+#common_person_blogtitle #title02 a{color:#000;}
+#common_person_blogtitle span{padding-left:8px;}
+#common_person_blogtitle span a{font-size:12px;font-weight:normal;font-family:"宋体";color:#000;}
+#common_blog_nav .blog_nav01{float:left;width:950px;height:35px;background:url(./nav_bj69.jpg) center 0 no-repeat;}

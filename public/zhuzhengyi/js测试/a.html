@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select name="tid" name="tid" id="aa">
+		<option value="1">北京</option>
+		<option value="2">上海</option>
+		<option value="3">广州</option>
+		<option value="4" selected>深圳</option>
+	</select>
+	<a id="edit" href="post/4/edit">aaa</a>
+	<script src="jq.js"></script>
+	<script>
+		alert($);
+		// $('#aa').on('change', function(){
+		// 	var id = $(this).val();
+		// 	$('a').attr('href', 'baidu/'+ id +'/admin');
+		// });	
+		  $("select[name='tid']").on('change', function(){
+                var id = $(this).val();
+                $('#edit').attr('href','/post/'+id+'/edit');
+            });
+	</script>
+</body>
+</html>

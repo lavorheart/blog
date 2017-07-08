@@ -1,0 +1,63 @@
+/*
+ * project  :  mod-commentTextarea
+ * date   : 14-08
+ * author : qiyy
+ * history :
+ */
+.mod-commentTextarea {}
+.mod-commentTextarea .w-arr{}/*150420a*/
+.mod-commentTextareaTitle {margin-bottom: 8px;}
+.mod-commentTextareaTitle .w-rightBox{ float: right; }
+.mod-commentTextareaTitle .w-com{}
+.mod-commentTextareaTitle .w-num{ font-size:18px;;font-family: "georgia";color:#e6000a}
+.mod-commentTextareaTitle .w-txt{ font-size:12px;;color:#999;}
+.mod-commentTextareaTitle .w-reply{}
+.mod-commentTextareaTitle .w-tips{ font-size: 12px;color:#999;}
+.mod-commentTextarea .w-line{color:#999;}
+.mod-commentTextareaTitle .w-line{ padding: 0 10px;}
+.mod-commentTextareaUser  .w-line{ padding: 0 2px;}
+
+.mod-commentTextareaMiddle {margin-bottom: 8px;}
+.mod-commentTextareaMiddle .w-areaBox { height:110px;;width:100%;}
+.mod-commentTextareaMiddle .w-commentArea { height:88px;width:97.9%;padding: 10px 1%;border:1px solid #dcdcdc;resize: none;outline:none; font-size:14px;}/*150420a*/
+
+::-webkit-input-placeholder { color:#dddddd; }  /*150420a*//*新增*/
+input:-moz-placeholder { color:#dddddd; } /*150420a*//*新增*/
+
+.mod-commentTextareaMiddle .w-submitBar {width:100%;height:40px;border:1px solid #dcdcdc;border-top: none;background: #f7f7f7;}
+.mod-commentTextareaMiddle a.w-submitBtn { display: block;float: right;width:120px;height:40px;background: #e6000a;text-align: center;color:#fff;font: 18px/40px "microsoft yahei";}
+.mod-commentTextareaMiddle a.w-submitBtn:hover {background: #C8050D;text-decoration: none}
+.mod-commentTextareaMiddle .i-commentFaceBox {}
+
+.mod-commentTextareaMiddle  .w-areaBox-focus .w-commentArea {}/*150420a*/
+
+.mod-commentTextareaUser{ font-size: 12px; padding-top:8px;}/*150420a*/
+.mod-commentTextareaUser a{color:#999}
+.mod-commentTextareaUser .w-name{ color:#000;}
+.mod-commentTextareaUser .w-num{ font-family: arial;font-weight: 700;color:#E6000A;}
+
+/*
+face
+*/
+.mod-comment-inputFaceBox{position: relative}
+.mod-comment-faceBox{width:361px;background: #fff;z-index: 999;}
+.mod-comment-inputFaceBox  {padding-top: 5px;}
+.mod-comment-inputFaceBox  .w-face-trigger {display: inline-block; position: relative;;margin-left: 7px;;width:50px;height: 30px;float: left;  line-height: 30px;vertical-align: middle;cursor: pointer;}
+.mod-comment-inputFaceBox   .icon-faceTrigArr{display: inline-block;width:7px;height:4px;margin-bottom: 2px;overflow: hidden;background: url(http://y0.ifengimg.com/newcommentpage/images/face-TriggerArr.gif) no-repeat 0 -4px;}/*150317a*/
+.box_show {position: fixed;top: 0px;width: 300px; z-index:99;}/*150608a*/
+* html,* html body{background-image:url(about:blank);background-attachment:fixed;}/*150608a*/
+#boxShowz{ padding:0px !important;}/*150608a*//*新增*/
+.mod-comment-inputFaceBox  .w-trigger-on  .icon-faceTrigArr{background-position: 0 0}
+.mod-comment-inputFaceBox  .w-face-trigger img{float: left;padding: 2px;margin-right: 5px;border: 1px solid transparent;}
+.mod-comment-inputFaceBox  .w-face-trigger:hover img
+,.mod-comment-inputFaceBox  .w-trigger-on img
+{border-color:#ebebeb;background: #fff;}
+
+.mod-comment-nearlyFace {width:200px;float:left;}
+.mod-comment-nearlyFace .mod-facesImg-list{}
+.mod-comment-nearlyFace .mod-facesImg-list li{margin:0  5px;border-color:transparent;_border-color:#f7f7f7}
+.mod-comment-nearlyFace .mod-facesImg-list li:hover
+,.mod-comment-nearlyFace .mod-facesImg-list li.hover
+{ border-color:#dcdcdc;background: #fff;}
+
+

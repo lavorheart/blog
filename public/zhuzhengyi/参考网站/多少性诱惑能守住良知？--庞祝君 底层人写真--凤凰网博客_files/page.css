@@ -1,0 +1,282 @@
+/*
+ * project  :  commentPage
+ * date   : 14-08
+ * author : qiyy
+ * history :
+ */
+body{font-family:"arial" , "simsun" ; margin:0 !important;  }/*150608a*/
+/*
+.i-xxx  该项目通用
+*/
+.i-wrap{}
+.i-line {background: #000;height: 2px;width: 100%; overflow: hidden;}
+
+/*
+header
+*/
+.mod-commentHeader{vertical-align: middle;border-bottom: 1px solid #dcdcdc;}
+.mod-commentHeader-inner {height:45px;line-height: 45px;font-size:12px;}
+.mod-commentHeader .w-rightBar a{padding: 0 14px;}
+.mod-commentHeader .w-rightBar a
+,.mod-commentHeader .w-rightBar em {color: #999;}
+.mod-commentHeader .w-rightBar .w-name{color: #999;}/*150317a*/
+.mod-commentHeader .w-banner {display: block;width:200px;background: url(http://y0.ifengimg.com/newcommentpage/images/logo.png) no-repeat 0 center;text-indent: -9999px;}
+
+/*
+footer
+*/
+.icon-all {
+    background-image:url(http://y0.ifengimg.com/commonpage/1129/v1/all.png);
+    background-repeat: no-repeat;
+}
+.icon-camera {
+    display: inline-block;
+    width: 19px;
+    height:14px;
+    background-position:  0 -439px;
+}
+.icon-cidai{
+    display: inline-block;
+    width: 19px;
+    height:14px;
+    background-position:  -43px -439px;
+}
+
+.mod-commentFooter{
+    height:100px;
+    margin-top: 40px;
+    border-top:1px solid #ddd;
+    background: #f5f5f5;
+}
+.mod-commentFooter-inner{
+    padding-top: 15px;
+}
+.mod-commentFooter .toplink em{
+    padding: 0 5px;;
+}
+
+.mod-commentFooter .toplink a{
+    display: inline-block;
+    color:#000;
+}
+.mod-commentFooter .right-link .last{
+    margin-left: 15px;;
+}
+
+.mod-commentFooter .right-link em{
+    padding: 0;
+}
+.mod-commentFooter .right-link i{
+    padding: 0 ;
+    font-weight: bold;
+}
+.mod-commentFooter p {
+    padding-bottom: 15px;
+    font-family: arial;
+}
+
+/*
+crumb nav
+*/
+.i-crumbs { padding: 18px 0;}
+.i-crumbs a{ color:#999;}
+.i-crumbs em{ padding: 0 5px;color:#999}
+.i-crumbs .cur{ color:#000;}
+
+/*
+myInfo
+*/
+.i-topMyInfo-wrap{ margin-bottom: 30px;;overflow: hidden; zoom: 1}
+.i-myInfo{ float: left;width:330px;}
+.i-myInfo .w-ava{    width: 60px;float: left;}
+.i-myInfo .w-avatar
+,.i-myInfo .w-avatar img{display: block;width:60px;height:60px;}
+.i-myInfo .w-avatar{background: #F2F2F2;}
+.i-myInfo .w-numBox{}
+.i-myInfo .w-numBox .comNum{ float:left;margin-right: 20px; }
+.i-myInfo .w-numBox .repNum{ float: left;border-left: 1px solid #c5c5c5; padding-left: 20px;}
+.i-myInfo .w-numBox .num{ display: block;margin-bottom: 3px;font-weight: 700;;font-size:14px;color:#000;}
+.i-myInfo .w-numBox em{ color:#b5b5b5}
+
+.i-myInfo .w-infoTxt{ padding-left: 80px; *padding-left: 165px}
+.i-myInfo .w-myName{ padding: 0px 0 26px;font-size:16px;}
+.i-myInfo .w-gray{ padding-bottom: 13px;color:#b5b5b5}
+.i-myInfo .w-red{ ;color:#E8101D;font-size:14px;font-weight: 700;}
+.i-myInfo .w-em{ color:#000}
+.i-myInfo .w-set{ padding:10px 0 9px 30px;background: url(http://y0.ifengimg.com/newcommentpage/images/icon-set.png) no-repeat 0 center;color:#000}
+
+
+/*
+top right 3 img block
+*/
+.i-topMyInfo-wrap .mod-imgLinkBlock{ width:660px;_width:670px; float: right;overflow: hidden;zoom: 1}
+.mod-imgLinkBlock .w-imgBlock{position: relative;width:210px;height:200px;float: left;margin-left: 10px;}
+.mod-imgLinkBlock .w-imgBlock .img{ display: block;  z-index: 9;width:210px;height:200px;background: #0A7E29}
+.mod-imgLinkBlock .w-opa
+,.mod-imgLinkBlock .txt{ position: absolute;left: 0;bottom: 0;height:30px;width: 100%}
+.mod-imgLinkBlock .w-opa{background: #000;z-index: 10;opacity: 0.4;filter:alpha(opacity=40);}
+.mod-imgLinkBlock a.txt {display: block;z-index: 11;line-height: 30px;text-indent: 10px;color: #fff;font-size: 14px;}
+.mod-imgLinkBlock .txt:hover
+,.mod-imgLinkBlock .txt:visited{ color:#fff}
+
+/*
+content wrap
+*/
+.i-mainWrap{position: relative;}
+.i-mainWrap .mod-page{margin-top: 20px;}
+
+/*
+mainContent
+*/
+.i-mainContent {width:640px;float: left;}
+
+    /*
+    lineTabNav
+    */
+.i-lineTabNav{ margin-bottom: 33px;border-bottom: 2px solid #b5b5b5;font:20px/22px bold "microsoft yahei";margin-top:9px;}
+.i-lineTabNav a{display: inline-block;;margin-bottom: -2px;*margin-bottom: -5px;_margin-bottom:-8px;padding:0 30px 18px 10px; border-bottom:2px solid #b5b5b5;color:#b5b5b5;}
+.i-lineTabNav .cur{ border-bottom-color: #000;color:#000; }
+.i-lineTabNav a:hover
+,.i-lineTabNav a:visited
+{ text-decoration: none;}
+/*
+mainSide
+*/
+.i-mainSide { width:300px;float: right; padding-top:5px;}/*150420a*/
+
+
+    /*
+    gray sideBlock common
+    */
+.mod-sideGray {padding:4px 4px;background:#f2f2f2;}/*150608a*/
+.mod-sideGray .w-tabBox{ position: relative}
+.mod-sideGray .w-box-li{padding-right: 10px;background: url(http://y0.ifengimg.com/newcommentpage/images/icon-tabTitleBg.png) no-repeat 130px bottom;}/*150317a*/
+.mod-sideGray .w-icon-hot{position: absolute;left:-5px;top:6px;display: block;width:24px;height:17px;background: url(http://y0.ifengimg.com/newcommentpage/images/icon-hot.gif) no-repeat 0 0;}
+.mod-sideGray .w-tab{display: block;width:130px;height:36px;background: #f9f9f9;font:16px/36px "microsoft yahei";text-align: center;vertical-align: middle;color:#2b2b2b; float:left; cursor:pointer; border-top:3px solid #f9f9f9;}/*150608a*/
+.mod-sideGray .current{ background: #fff;color:#e6000a; border-top:3px solid #e6000a;}/*150608a*/
+.mod-sideGray .w-tab-cur{ background: #fff;color:#e6000a;}
+.mod-sideGray .w-moreBtn{float: right;padding-right: 10px;;line-height: 36px;;color: #999;vertical-align: bottom;}
+/*
+hot comment list
+*/
+.mod-hotCommentList{ margin-bottom: 10px; }/*150608a*/
+.mod-hotComment-ul { }
+.mod-hotComment-ul li{padding: 13px 10px 8px;margin-bottom: 2px;;background: #fff;}
+.mod-hotComment-ul li a{line-height: 20px;color:#999;}
+.mod-hotComment-ul .w-num {color:#2b2b2b; font-family: "georgia";font-size:14px;text-align: right}
+.mod-hotComment-ul .w-num-1 {color:#e6000a}
+.mod-hotComment-ul .w-num-2 {color:#ee8744}
+.mod-hotComment-ul .w-num-3 {color:#eeb357}
+
+/*
+hotSearch
+*/
+.mod-searchColorBox {padding: 20px 10px 14px;;background: #fff;}
+.mod-searchColorBox .w-title{margin-bottom: 13px;}
+.mod-searchColorBox .w-title-black{color:#2c2c2c;}
+.mod-searchColorBox .w-title-gray{margin-top: 16px;margin-bottom: 10px;;color:#999;}
+.mod-searchColorBox .w-opt{margin-bottom: 10px;overflow: hidden;zoom:1;}
+.mod-searchColorBox .w-order{display: inline-block;width:14px;float: left;}
+.mod-searchColorBox .w-opt .colorNum{position: relative ;margin-left: 28px;height:14px;;background: #f4f4f4;}
+
+.mod-searchColorBox  span.pr_10 em{ color:#da1d3b; font-size:16px; font-family:"georgia"}/*150608a*/
+.mod-searchColorBox  span.pr_10 a img{ display:block; margin:10px 0px 10px 220px;}/*150608a*/
+
+.mod-searchColorBox .w-opt .num {
+    position: absolute;top:0;left: 0;line-height: 14px;z-index: 10}
+.mod-searchColorBox .color{ cursor:pointer;}/*150420a*//*新增*/
+.mod-searchColorBox .w-opt .color {height:14px;}
+.mod-searchColorBox .w-opt-1 .color { background-color: #43b1f0}
+.mod-searchColorBox .w-opt-2 .color { background-color: #fd7400}
+.mod-searchColorBox .w-opt-3 .color { background-color: #bfdb39}
+.mod-searchColorBox .w-opt-4 .color { background-color: #e5007e}
+.mod-searchColorBox .w-opt-5 .color { background-color: #0168b7}
+.mod-searchColorBox .w-opt-6 .color { background-color: #e4004f}
+
+/*
+common order
+*/
+.mod-sideGray .w-order{ display: inline-block;width:18px;height:14px;color:#fff;
+    text-align: center;line-height: 16px;vertical-align: middle;font-family: arial;font-size: 12px;
+    overflow: hidden;}/*150420a*/
+.mod-sideGray .w-order-1{background-color: #43b1f0}
+.mod-sideGray .w-order-2{background-color: #fd7400}
+.mod-sideGray .w-order-3{background-color: #bfdb39}
+.mod-sideGray .w-order-4{background-color: #e5007e}
+.mod-sideGray .w-order-5{background-color: #0168b7}
+.mod-sideGray .w-order-6{background-color: #e4004f}
+.mod-sideGray .w-order-7{background-position: -54px -17px;}
+.mod-sideGray .w-order-8{background-position: 0 -34px;}
+.mod-sideGray .w-order-9{background-position: -18px -34px;}
+
+/*150420a*//*新增*/
+.vtxt { line-height: 18px;color: #999999; }
+.plcg{ position:absolute; padding-left:33px; height:20px; line-height:20px; background:url(http://y0.ifengimg.com/tres/pub_res/img/p_02.png) no-repeat; font-weight:bold; color:#666666;margin-left: 275px;margin-top: 41px;}
+.w-contentTxt img{vertical-align: middle; margin-right:5px;}/*150429a*/
+body{ _background-image:url(about:blank); _background-attachment:fixed;} /* ie6 fixed hack */
+.loading{position: fixed; top:45%; left:50%; margin-left:-200px; z-index:999; display: none;}
+.vtxt {line-height: 28px; color: #999999; height:24px; padding-left:27px;}
+.d_line {border-bottom: 1px dashed #d9d9d9; height: 10px;margin-bottom: 5px;}
+/*
+most comment
+*/
+/*150420a*//*新增*/
+
+.mod-mostComment {margin-bottom: 10px;}/*150608a*/
+.mod-mostComment  .w-title{padding: 10px 0 15px;color:#000;font: bold  20px/22px  "microsoft yahei";text-align: center;}
+.mod-userList{}
+.mod-userList .w-userTable{margin-bottom: 10px;}
+.mod-userList .w-userTable li{margin-bottom: 2px;padding-top: 7px;padding-bottom: 7px;;background: #fff;overflow: hidden;zoom:1;}
+.mod-userList .w-userTable span{display: inline-block;float: left; }
+.mod-userList .w-order{ margin-left: 10px;}
+
+.mod-userList .w-name{width:140px;padding-left: 9px; color:#004378;}
+.mod-userList .w-name a{}
+.mod-userList .w-tit{width:37px;padding-left: 5px;color:#b5b5b5;}
+.mod-userList .w-txt{color:#000;}
+
+
+/*
+comment details page
+*/
+.i-commentPage{padding-top: 15px}/*150420a*/
+/*title*/
+.i-commentArticleTitle {margin-bottom: 48px;}/*150420a*/
+.i-commentArticleTitle a{font:bold 24px/28px "Microsoft Yahei";color:#000;}/*150317a*/
+.i-commentArticleTitle a:hover{color:#e6000a;text-decoration: none}
+/*comment*/
+.i-personCommentPage .mod-commentNew .w-articleTitle{display: block}
+
+.i-personCommentPage .mod-commentNewTitle{display: none;}
+
+.i-personCommentPage .mod-articleReplyBlockTowerFirst{margin-top: 18px;}/*150317a*/
+
+/*
+reply btn show rule
+*/
+.i-personCommentPage  .mod-articleReplyBlock .w-reply{display: none}/*150317a*/
+,.i-personCommentPage .mod-articleCommentBlock .w-rep-line
+{
+    display: none;
+}/*150317a*/
+.i-personCommentPage .mod-articleReplyBlock .w-rep-reply{}/*150317a*/
+.i-personCommentPage .mod-articleReplyBlock-on .w-rep-reply{}/*150317a*/
+
+/*
+sideDialog
+*/
+body{ _background-image:url(about:blank); _background-attachment:fixed;} /*150420a*//*新增*/
+.i-backToTop{position:fixed; left:50%; bottom:50px; margin-left:540px;}/*150420a*/
+
+/*
+facebox
+*/
+.i-commentFaceBox {margin-right: 140px;}
+
+.ad_01 img{ display:block;}/*150420a*/
+
+/*150608a*//*新增开始*/
+.fhsd{ background:#fbfbfb; border:1px solid #dcdcdc; border-left:none; border-right:none; margin-top:20px; padding:14px 10px;}
+.fhsd p{ line-height:32px; font-size:14px; color:#2b2b2b; }
+.fhsd p span{ float:right; padding-right:4px; font-size:12px;}
+/*150608a*//*新增结束*/

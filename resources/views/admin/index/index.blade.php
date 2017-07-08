@@ -294,7 +294,7 @@
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> 
             <!-- /.box-body -->
             <div class="box-footer clearfix no-border">
               <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>

@@ -99,5 +99,11 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('userDetail');
+        Schema::dropIfExists('type');
+        Schema::dropIfExists('post');
+        Schema::dropIfExists('reply');
+        Schema::dropIfExists('friendlink');
+        Schema::dropIfExists('config');
     }
 }

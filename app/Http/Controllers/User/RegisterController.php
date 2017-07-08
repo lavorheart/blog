@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Http\Model\userdetail;
+use \App\Http\Model\users;
 
 class RegisterController extends Controller
 {	
@@ -11,18 +13,14 @@ class RegisterController extends Controller
     public function register()
     {
     	return view('User.register.register');
+    	
     }
     // 接收注册页信息
     public function insert(Request $request)
     {	
     	// 获取数据
-    	$data = $request->except('_token');
-    	// $data = $request->all();
-    	
     	$userName = $request->userName;
    		$password = \Crypt::encrypt($request->password);
-   		// dd($password);
-   		// $password = $request->password;
    		$remember_token = str_random(50);
    		
    		// 验证数据库文件真实HTTP表单验证
@@ -47,24 +45,32 @@ class RegisterController extends Controller
    		$updated_at = date('Y-m-d h:i:s');
    		// dd($created_at);
    		// 数据库操作
-   		$id = \DB::table('users')->insertGetId(
-   			 [
-			  "userName" => $userName,
-			  "password" => $password,
-			  "created_at" => $created_at,
-			  "updated_at" => $updated_at,
-			  "remember_token" => $remember_token,
-			]
-    		);
-
+      $uid = users::insertGetId(
+         [
+        "userName" => $userName,
+        "password" => $password,
+        "created_at" => $created_at,
+        "updated_at" => $updated_at,
+        "remember_token" => $remember_token,
+      ]
+        );
+      
    		
    		// 结果处理用户登录加积分
    		// ============================登录加积分============================================
-   		$userdetail=\DB::table('userdetail')->insert(['uid'=>$id]);
+   		$userdetail=userdetail::insertGetId(['uid'=>$uid]);
    		// 查找数据
-   		$userdetail=\DB::table('userdetail')->where('uid',$id)->first();
-   		// dd($userdetail);
-   		$num = $userdetail->num;
+      $userdetail =users::
+        join('userdetail', function ($join) use($uid){
+            $join->on('users.id', '=', 'userdetail.uid')
+                 ->where('userdetail.uid', '=', $uid);
+        })
+        ->get();
+        // dd($userdetail);
+        foreach ($userdetail as $key => $value) {
+          $num = $value->num;
+        }
+   		
    		
  		//开始积分
 		$num+=10;
@@ -88,36 +94,21 @@ class RegisterController extends Controller
 			$data = [
 				'num'=>$num,
 				'level'=>$level,
-				'uid'=>$id
+				'uid'=>$uid
 			];
 		// 执行加积分
-		$userdetail_add=\DB::table('userdetail')
-            ->where('uid', $id)
-            ->update($data);
+		$userdetail_add=userdetail::
+            where('uid', $uid)->update($data);
 
-        if ($id && $userdetail && $userdetail_add) 
+        if ($uid && $userdetail && $userdetail_add) 
         {	
         	session(['master'=>$userdetail]);
-   			return redirect('/user/index')->with(['info'=>'恭喜您 注册成功']);
+   			return redirect('/user/login')->with(['info'=>'恭喜您 注册成功']);
 
    		}else{
    			return back()->with(['info'=>'登录错误']);
    		}
-			// var_dump($data);
-    	
-    	// if ($request->hasFile('字段名'))
-    	//  {
-    	// 	if ($request->file('字段名')->isValid()) 
-    	// 	{
-    	// 		// 获取扩展名
-    	// 		$ext = $request->file('字段名')-extension();
-    	// 		// 随机文件名
-    	// 		$filename = time().mt_rand(10000,9999).'.'.$ext;
-    	// 		// 移动文件
-    	// 		$request->file('字段名')->move('./user/uploads/users');
-    	// 		$data->file['字段名']=>$filename;
-    	// 	}
-    	// }
+			
     }
 
 }
