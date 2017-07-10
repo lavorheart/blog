@@ -44,18 +44,8 @@
                 <input type="text" class="form-control" value="{{ $data['nickName'] }}" name="nickName" ><br>
                 <input type="text" class="form-control" value="{{ $data['qq'] }}" name="qq" ><br>
                 <input type="mail" class="form-control" value="{{ $data['email'] }}" name="email"  class="last-item"><br> 
-                <input type="radio"  name="sex" value="m"
-                @if($data['sex']==m)
-                checked
-                @endif
-                
-                /> 男
-                <input type="radio" name="sex" value="w" 
-                @if($data['sex']==w)
-                checked
-                @endif
-                
-                />女<br>
+                <input type="radio"  name="sex" value="m"/> 男
+                <input type="radio" name="sex" value="w" checked />女<br>
                 <hr>
                 修改头像:
                 <hr>

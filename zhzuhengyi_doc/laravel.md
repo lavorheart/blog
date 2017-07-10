@@ -28,7 +28,7 @@
 创建控制器
 
 php artisan make:controller AlbumController
-php artisan make:controller User\PostController --resource
+php artisan make:controller User\Home\IndexController --resource
 php artisan make:model Http\Model\users
 
 数据迁移
@@ -69,7 +69,7 @@ composer dump-autoload
                 //执行移动上传文件
                 $filename = time().rand(1000,9999).".".$ext;
                 $file->move("./upload/",$filename);
-                                
+                      
                 return response($filename); //输出
                 exit();
             }
@@ -82,5 +82,8 @@ composer dump-autoload
             ->update($data);
     // 清除session
         $request->session()->forget('master');
-
-            
+    <!-- 解密 -->
+    \Crypt::decrypt($oldpassword);  
+    自动更新composer.json文件
+    composer dump-autoload
+    

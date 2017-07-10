@@ -9,8 +9,9 @@ class IndexController extends Controller
 {
     //
     //index
-    public function index()
+    public function index($id)
     {	
+    	// var_dump($id);
     	return view('user.index.index');
     }
 }

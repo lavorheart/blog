@@ -21,7 +21,7 @@
 
     <body>
         <div class="page-container">
-        </div>
+        
         <div >
             <h1>登录</h1>
 
@@ -61,7 +61,10 @@
        
             <tr>
                 <div align="center"><a href="/user/register">注册</a></div>
+                <br>
+                <div align="center"><a href="/user/forget">密码找回</a></div>
             </tr>
+    </div>
     <script>  
     function re_captcha() {
 

@@ -97,11 +97,11 @@ class RegisterController extends Controller
 				'uid'=>$uid
 			];
 		// 执行加积分
-		$userdetail_add=userdetail::
-            where('uid', $uid)->update($data);
+		  $userdetail_add=userdetail::
+      where('uid', $uid)->update($data);
 
-        if ($uid && $userdetail && $userdetail_add) 
-        {	
+      if ($uid && $userdetail && $userdetail_add) 
+      {	
         	session(['master'=>$userdetail]);
    			return redirect('/user/login')->with(['info'=>'恭喜您 注册成功']);
 

@@ -33,38 +33,22 @@
     @if(session('master'))
     <div id="comments-form" class="post-bg">
         <div class="post-bg-white">
-            <h4>编辑你的个人信息</h4>
+            <h4>修改密码</h4>
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger" >{{ $error }}</div>
+            @endforeach
             @if(session('info'))    
             <div class="alert alert-danger" >{{ session('info')}}</div> 
-            @endif         
-            <form id="form-post-comment" action="{{ url('/userBG/Personal_Center')}}" method="post" enctype="multipart/form-data">
+            @endif     
+            <form id="form-post-comment" action="{{ url('/userBG/Personal_Center')}}/{{ $data['id']}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field()}}
+                {{ method_field('PUT') }}
                 
-                <input type="hidden" value="{{ $userName }}" name="userName" ><br>
-                <input type="text" class="form-control" value="{{ $data['nickName'] }}" name="nickName" ><br>
-                <input type="text" class="form-control" value="{{ $data['qq'] }}" name="qq" ><br>
-                <input type="mail" class="form-control" value="{{ $data['email'] }}" name="email"  class="last-item"><br> 
-                <input type="radio"  name="sex" value="m"
-                @if($data['sex']==m)
-                checked
-                @endif
+                原密码:<input type="password" class="form-control" value="" name="oldpassword" ><br>
+                新密码:<input type="password" class="form-control" value="" name="newpassword" ><br>
+                确认新密码:<input type="password" class="form-control" value="" name="surepassword"><br> 
+                <hr>
                 
-                /> 男
-                <input type="radio" name="sex" value="w" 
-                @if($data['sex']==w)
-                checked
-                @endif
-                
-                />女<br>
-                <hr>
-                修改头像:
-                <hr>
-                <img src="/user/images/photo/person/{{ $data['photo'] }}" width="500"> <br>
-                <br>
-                <input type="file"  name="photo" class="btn btn-primary btn-sm btn-flat"/>
-                <hr>                  
-                 <li><a href="/userBG/Personal_Center/{{ $data['id'] }}/edit" class="active">修改密码 </a></li>         
-                <hr>
                 <button id="search-btn" class="btn btn-primary btn-sm btn-flat" type="submit"> 递交</button>
                 
             </form>

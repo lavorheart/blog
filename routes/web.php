@@ -19,8 +19,12 @@
 Route::group(['middleware'=>'userlogin'],function(){
 	
 });
-//前台主页
-Route::get('/','User\IndexController@index');
+
+
+//前台执行注册
+Route::post('/user/register','User\RegisterController@insert');
+//前台注册页
+Route::get('/user/register','User\RegisterController@register');
 // 验证码
 Route::get('/kit/captcha/{tmp}','User\KitController@captcha');
 //前台登录页
@@ -29,26 +33,69 @@ Route::get('/user/login','User\LoginController@login');
 Route::post('/user/dologin', 'User\LoginController@dologin');
 // 前台退出
 Route::get('/user/logout','User\LoginController@logout');
-//前台注册页
-Route::get('/user/register','User\RegisterController@register');
-//前台执行注册
-Route::post('/user/register','User\RegisterController@insert');
-//前台密码找回
-Route::get('user/pass','User\PassController@pass');
-//前台用户中心
-Route::resource('/Personal_Center','User\Personal_CenterController');
+
+
+
+
+//==================前台密码找回邮箱验证==============
+
+
+// 主页邮箱密码找回
+Route::get('/user/forget','User\PassController@forget');
+// 发送找回邮件的方法路由
+Route::post('/user/sendEmail','User\PassController@sendEmail');
+// 找回密码的模板
+Route::get('/user/newpass/{id}','User\PassController@newpass');
+// 邮箱取回链接
+Route::get('/user/link/{token}','User\PassController@link');
+// 提示错误消息
+Route::get('/user/info','User\PassController@info');
+// 密码更新
+Route::post('/user/updatepass','User\PassController@updatepass');
+
+//==============邮箱验证结束===================
+
+
+
+/**
+*前台主页通过name获取用户数据
+*未做
+*/
+Route::get('/userHome/{userName}/blog','User\IndexController@index');
+// Route::resource('/userHome/{userName}/blog','User\Home\IndexController');
+
+//=================前台页结束====
+
+
+/**
+*用户后台用户中心
+*
+*/
+Route::resource('/userBG/Personal_Center','User\Personal_CenterController');
 
 //================================================
 
 
-//前台文章详情
-Route::get('/user/detail','User\DetailController@detail');
 /**
-*
+*用户后台分区列表页
 *
 */
-//前台帖子列表页
+Route::resource('/userBG/Type','User\TypeController');
+
+
+/**
+*前台文章详情
+*和帖子合并用资源控制器做改
+*/
+Route::get('/user/detail','User\DetailController@detail');
+
+
+/**
+*未做
+*帖子路由
+*/
 Route::resource('/post','User\PostController');
+
 
 
 
@@ -83,6 +130,9 @@ Route::group(['middleware'=>'adminlogin'],function(){
 // 测试用redis缓存
 // Route::get('/cache','Admin\CacheController@cache');
 // 自定义函数类多表查询
-Route::get('/test','Admin\testController@test');
+
+// Route::get('/test','Admin\testController@test');
 // model类的引用方法
-Route::get('/model','Admin\testController@model');
+// Route::get('/model','Admin\testController@model');
+// 后台主页
+// Route::get('/admin/index','Admin\indexController@index');

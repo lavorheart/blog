@@ -10,9 +10,9 @@
                     <div class="post-bg-white">    
                            <div class="post-bg-white">
 
-                                <form id="form-post-comment" action="{{ url('/post')}}" method="POST" enctype="multipart/form-data">
+                                <form id="form-post-comment" action="{{ url('/userBG/Type')}}" method="POST" enctype="multipart/form-data">
                                     {{ csrf_field()}}
-
+                                    <input type="hidden" name='userName' value="{{ $userName }}">
                                     分类名称:
                                     <input type="text" value="{{ old('name')}}" name="name" placeholder="分类名称"><br>
                                     父分类:

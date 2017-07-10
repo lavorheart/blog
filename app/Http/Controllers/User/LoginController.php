@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \App\Http\Model\userdetail;
+use \App\Http\Model\users;
 
 class LoginController extends Controller
 {
@@ -18,19 +20,27 @@ class LoginController extends Controller
 
    	public function dologin(Request $request)
    	{	
+
    		//获取传递数据=============================
    		$data = $request->except('_token');
 
    		// 判断是否记住我		
    		$remember_token=\Cookie::get('remember_token');
-   		// dd($remember_token);
+   		
    		if(\Cookie::get('remember_token')){
 
-   			$res=\DB::table('users')->where('remember_token',$remember_token)->first();
-            $userdetail=\DB::table('userdetail')->where('uid',$res->id)->first();
+   			$res=users::where('remember_token',$remember_token)->first();
+            $id = $res->id;
+            $user_All =users::
+            join('userdetail', function ($join) use($id){
+               $join->on('users.id', '=', 'userdetail.uid')
+                    ->where('users.id', '=', $id);
+            })
+           ->first();
+
    			// 存入session
-   			session(['master'=>$userdetail]);
-   			return redirect('/')->with(['info'=>'恭喜您 登录成功']);
+   			session(['master'=>$user_All]);
+   			return redirect('/userHome/'.session('master')->userName.'/blog')->with(['info'=>'恭喜您 登录成功']);
    		}
 
    		//判断二维码
@@ -45,21 +55,25 @@ class LoginController extends Controller
    		$userName = $request->userName;
 
    		// 查找数据库
-         $users = \DB::table('users')->where('userName',$userName)->first();
-         // dd($users);
+         $users = users::where('userName',$userName)->first();
+         // 获取用户id
+         $id = $users->id;
+         $user_All =users::
+           join('userdetail', function ($join) use($id){
+               $join->on('users.id', '=', 'userdetail.uid')
+                    ->where('users.id', '=', $id);
+           })
+           ->first();
+
+         
          	
    		//===============判断用户登录成功事件
    				if ($users)
    				{	
 
-                  //================ 查找用户详情===用户登录密码判断==================
-
-                  $userdetail=\DB::table('userdetail')->where('uid',$users->id)->first();
-                  
-
                   //========================开始积分=============
-                  $num = $userdetail->num;
-                  
+                  $num = $user_All->num;
+
                   $num+=5;
                   // dd($num);
                   if($num>=0 && $num<=50){
@@ -85,9 +99,10 @@ class LoginController extends Controller
                         'uid'=>$users->id
                      ];
                   // 执行加积分
-                  $userdetail_add=\DB::table('userdetail')
-                        ->where('uid', $users->id)
+                  $userdetail_add=userdetail::
+                        where('uid', $users->id)
                         ->update($data);
+
                   // =============登录加积分完毕==============
 
                   //================================= 获取用户输入密码判断输入密码与数据库密码是否一致
@@ -97,9 +112,16 @@ class LoginController extends Controller
                   {
                      return back()->with(['info'=>'密码输入错误']);
                   }
-   
-                  // 讲用户详情存入session
-   					session(['master'=>$userdetail]);
+
+                  // 获取用户名
+                  // $user = $user_All->userName;
+                  // session([ 'user' => $user]);
+                  // 定义常量
+                  // define('master', session('user'));
+                  // define('master', 'admin');
+                  // dd(master);
+                  // 讲用户信息存到session master将变量存为常量
+   					session([ 'master' =>$user_All]);
                   // ================================密码判断完成===========================
 
    					// ======判断是否勾选记住我cookie
@@ -108,7 +130,7 @@ class LoginController extends Controller
    						\Cookie::queue('remember_token',$users->remember_token,10);
    					}
                   // 成功处理
-   					return redirect('/')->with(['info'=>'恭喜您:登录成功!']);
+   					return redirect('/userHome/'.session('master')->userName.'/blog')->with(['info'=>'恭喜您:登录成功!']);
    				}else{ 
                   // 失败处理
    					return back()->with(['info'=>'该用户不存在']);
