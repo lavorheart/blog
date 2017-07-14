@@ -25,11 +25,11 @@
         <div >
             <h1>登录</h1>
 
-            <form action="/user/dologin" method="post">
+            <form class="well form-search" action="/user/dologin" method="post">
             {{ csrf_field()}}
-                @if(session('info'))
-                    <p style="color:red">{{ session('info') }}</p>
-                @endif
+                @if(session('info'))         
+                        <button class="btn">  {{ session('info')}}</button>        
+                 @endif  
                 <input type="text" name="userName" class="username" placeholder="用户名">
                 <input type="password" name="password" class="password" placeholder="密码">
                 <span>
@@ -41,14 +41,24 @@
                 <!-- <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="c2c98f0de5a04167a9e427d883690ff6" border="0"></a> -->
                 <br>
                 <br>
-                <span>
-                    <input name="remember_me" type="checkbox"><br>
-                    <b style="color:blue">记住我</b>
-                    <button type="submit">登录</button>
-                </span>
-                               
+                <label class="checkbox"> 
+                 
+                    <input type="checkbox"><br>记住我 
+                </label>
+                    
+                <button class="btn" >登录</button>
+               
+                   
                 <div class="error"><span>+</span></div>
             </form>
+             <br>
+                    <a  class="btn btn-success" href="/user/register">
+                <button class="btn btn-success">  注册</button>
+                    </a>
+                <br>
+                    <a class="btn" href="/user/forget">
+                <button class="btn">  密码找回</button>
+                    </a>
             <div class="connect">
                 <p>Or connect with:</p>
                 <p>
@@ -59,11 +69,10 @@
             </div>
         </div>
        
-            <tr>
-                <div align="center"><a href="/user/register">注册</a></div>
-                <br>
-                <div align="center"><a href="/user/forget">密码找回</a></div>
-            </tr>
+           
+                
+               
+           
     </div>
     <script>  
     function re_captcha() {

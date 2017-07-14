@@ -14,7 +14,7 @@ class PassController extends Controller
     public function sendEmail(Request $request)
     {	
     	$EmailAddress = $request->EmailAddress;
-    	// dd($request->all());
+    	// dd($EmailAddress);
     	// 发送邮件
     	/*\Mail::raw('这是个测试邮件',function($message)
     	{
@@ -93,16 +93,17 @@ class PassController extends Controller
     public function updatepass(Request $request)
     {
     	$data = $request->except('_token');
-    	// $this->validate($request, [
-     //    'newpassword' => 'required|min:6|max:16',
-     //    'surepassword' => 'required|same:newpassword',
-    	// ],[
-    	// 'newpassword.required'=>'密码不能为空',
-    	// 'newpassword.min'=>'密码最小6位字符',
-    	// 'newpassword.max'=>'密码最大16位字符',
-    	// 'surepassword.same'=>'两次密码输入不一致',
-    	// 'surepassword.required'=>'确认密码不能为空',
-    	// ]);
+        // dd($data);
+    	$this->validate($request, [
+        'newpassword' => 'required|min:6|max:16',
+        'surepassword' => 'required|same:newpassword',
+    	],[
+    	'newpassword.required'=>'密码不能为空',
+    	'newpassword.min'=>'密码最小6位字符',
+    	'newpassword.max'=>'密码最大16位字符',
+    	'surepassword.same'=>'两次密码输入不一致',
+    	'surepassword.required'=>'确认密码不能为空',
+    	]);
     	$id = $request->id;
     	$newpassword = encrypt($request->newpassword);
     	$res = users::where('id',$id)->update(['password'=>$newpassword]);

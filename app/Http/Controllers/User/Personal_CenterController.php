@@ -14,9 +14,22 @@ class Personal_CenterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($userName)
     {   
        
+       // ==============用这个方法可以做成多用户===
+        $data = GetUserData($userName);
+
+        //--- 自定义函数获取用户所有数据
+
+        $UrlData = GetUrlData($userName);
+        // dd($UrlData);
+        $title ='用户页面';
+        $userName = $userName;
+        // dd($data);
+        // ---所有控制器必传参数
+
+        return view('user.Personal_Center.admin.Personal_Centers',compact('UrlData','title','userName','data'));
 
     }
 
@@ -39,8 +52,9 @@ class Personal_CenterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request,$userName)
+    {   
+
         //获取数据
         $data=$request->except('_token','_method','userName');
         // 获取递交的用户名
@@ -78,7 +92,7 @@ class Personal_CenterController extends Controller
         $userdetail = userdetail::where('id',$id)->update($data);
         if($userdetail)
         {   
-            return redirect('/userBG/Personal_Center/'.$userName)->with(['info'=>'用户信息更新成功']);
+            return redirect('/userBG/'.$userName.'/Personal_Center/')->with(['info'=>'用户信息更新成功']);
         }else{
             return back()->with(['info'=>'用户信息更新失败']);
         }
@@ -93,10 +107,7 @@ class Personal_CenterController extends Controller
      */
     public function show($id)
     {
-        // ==============用这个方法可以做成多用户===
-        $data = GetUserData($id);
-        $userName = $id;
-        return view('user.Personal_Center.admin.Personal_Centers',['title'=>'分类列表','data'=>$data,'userName'=>$userName]);
+        
 
     }
 
@@ -106,15 +117,19 @@ class Personal_CenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($userName,$id)
     {
         //添加页面
-        // echo $id;
         $data = userdetail::find($id);
 
-        // $data = $data-> ToArray();
-        // dd($data);
-        return view('user.Personal_Center.admin.Edit',['title'=>'分类添加','data'=>$data]);
+        //--- 自定义函数获取用户所有数据
+
+        $UrlData = GetUrlData($userName);
+        $title ='修改密码';
+        $userName = $userName;
+        // dd($UrlData,$data);
+        // ---所有控制器必传参数
+        return view('user.Personal_Center.admin.Edit',compact('UrlData','title','userName','data'));
         
     }
 
@@ -125,26 +140,13 @@ class Personal_CenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        // dd($id);
-        // 对新密码的判断==================
-
-        /*$this->validate($request, [
-        'oldpassword' => 'required',
-        'newpassword' => 'required|min:6|max:16',
-        'surepassword' => 'required|same:newpassword',
-        ],[
-        'oldpassword.required'=>'原密码不能为空',
-        'newpassword.required'=>'新密码不能为空',
-        'newpassword.min'=>'新密码最小6位字符',
-        'newpassword.max'=>'新密码最大16位字符',
-        'surepassword.same'=>'新密码两次密码输入不一致',
-        'surepassword.required'=>'新密码确认密码不能为空',
-        ]);*/
-
-        //===================
-
+    public function update(Request $request, $userName, $id)
+    {   
+        
+        $UrlData = GetUrlData($userName);
+        // dd($UrlData);
+        $title ='分类添加';
+        $userName = $userName;
 
         //获取查询条件建立uid = id的关键字段
         $data = $request ->except('_token','_method');
@@ -186,7 +188,7 @@ class Personal_CenterController extends Controller
             $data = ['password'=>$newpassword];
             // dd($data);
             users::where('id',$uid)->update($data);
-            return redirect('/userBG/Personal_Center/'.$userName)->with(['info'=>'密码修改成功']);
+            return redirect('/userBG/'.$userName.'/Personal_Center/')->with(['info'=>'密码修改成功']);
         }
 
         

@@ -23,13 +23,13 @@
 
 ------------------------------------------
 
-常用命令
+常用命令 
 
 创建控制器
 
 php artisan make:controller AlbumController
-php artisan make:controller User\Home\IndexController --resource
-php artisan make:model Http\Model\users
+php artisan make:controller User\Core\CoreController --resource
+php artisan make:model Http\Model\adv
 
 数据迁移
 php artisan migrate  

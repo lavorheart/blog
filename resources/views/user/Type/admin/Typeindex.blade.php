@@ -4,8 +4,14 @@
 
              <!-- 判断用户登录后状态 -->
             @if(session('master'))
-           
-            <h5 style="color:red">{{ session('info')}}</h5>                        
+                @if(session('info'))
+                <div class="alert alert-success">
+                     <button type="button" class="close" data-dismiss="alert">×</button>
+                      <h4>
+                        提示!
+                      </h4>  {{ session('info')}}
+                 </div> 
+                @endif        
                         <hr>
                         <br>
                         <!-- 分类表单开始 -->
@@ -22,14 +28,20 @@
                                     </select> 
                                 </td>                
                                 <td >
-                                    <a id="edit" href="/userBG/Type/0/edit?userName={{ $userName }}">编辑</a>
+                                    <a id="edit" href="/userBG/{{ $userName }}/Type/0/edit?userName={{ $userName }}">
+                                        <button id="search-btn" class="btn btn-info" type="button">编辑</button>
+                                    </a>
                                 </td> 
                                 <td>     
-                                    <a id="destroy">删除</a>      
+                                    <a id="destroy">
+                                    <button id="search-btn" class="btn btn-info" type="button"> 删除</button>
+                                    </a>      
                                 </td>
                             </table>
+
+
                             <!-- 准备form表单为删除做准备 -->
-                            <form  id="form-post-comment" style="display:none"  action="{{ url('/userBG/Type')}}/0?userName={{ $userName }}" method="post" enctype="multipart/form-data">
+                            <form  id="form-post-comment" style="display:none"  action="{{ url('/userBG')}}/{{ $userName }}/Type/0?userName={{ $userName }}" method="post" enctype="multipart/form-data">
                                     <!-- 伪造方法 -->
                                    
                                     {{ method_field('DELETE')}}
@@ -48,8 +60,8 @@
                                 // <!-- 下框选中改变按钮值属性 按需加载-->
                                 $("select[name='pid']").on('change', function(){
                                     var id = $(this).val();
-                                    $('#edit').attr('href','/userBG/Type/'+id+'/edit?userName={{ $userName }}');
-                                    $('#form-post-comment').attr('action','/userBG/Type/'+id+'?userName={{ $userName }}');
+                                    $('#edit').attr('href','/userBG/{{ $userName }}/Type/'+id+'/edit?userName={{ $userName }}');
+                                    $('#form-post-comment').attr('action','/userBG/{{ $userName }}/Type/'+id+'?userName={{ $userName }}');
                                     var res = $('#form-post-comment').attr('action');
                                     console.log(res);
                                 });

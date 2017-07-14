@@ -10,15 +10,17 @@
             <!-- FIRST LEVEL COMMENT-->
             <div class="comment-block">
                 <div class="gravatar">
-                    <a href="#"><img src="{{ url('/user/images/index/blog/avatars/admin-gravatar.jpg')}}" alt="" title="ZERGE"></a>
+                    <a href="#">
+                        <img src="/user/images/photo/person/{{ $UrlData['userdetail']['photo'] }}" alt="" title="用户头像">
+                    </a>
                 </div><!-- .gravatar -->
                 <div class="comment-text clearfix">
                     <span class="comment-info">
-                        <span class="italic" title="January 5, 2011 at 4:43 PM">博友路人甲</span>
+                        <span class="italic" title="January 5, 2011 at 4:43 PM">{{ $UrlData['userdetail']['nickName'] }}</span>
                     </span>
                     
                     <p class="comment"> 
-                        签名
+                        等级:: {{ $UrlData['userdetail']['level'] }} 
                     </p>
                   
                 </div><!-- end comment-text -->
@@ -34,10 +36,15 @@
     <div id="comments-form" class="post-bg">
         <div class="post-bg-white">
             <h4>编辑你的个人信息</h4>
-            @if(session('info'))    
-            <div class="alert alert-danger" >{{ session('info')}}</div> 
+            @if(session('info'))
+            <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>
+                       提示!
+                </h4>  {{ session('info')}}
+             </div> 
             @endif         
-            <form id="form-post-comment" action="{{ url('/userBG/Personal_Center')}}" method="post" enctype="multipart/form-data">
+            <form id="form-post-comment" action="{{ url('/userBG')}}/{{ $userName }}/Personal_Center" method="post" enctype="multipart/form-data">
                 {{ csrf_field()}}
                 
                 <input type="hidden" value="{{ $userName }}" name="userName" ><br>
@@ -51,11 +58,13 @@
                 <hr>
                 <img src="/user/images/photo/person/{{ $data['photo'] }}" width="500"> <br>
                 <br>
-                <input type="file"  name="photo" class="btn btn-primary btn-sm btn-flat"/>
-                <hr>                  
-                 <li><a href="/userBG/Personal_Center/{{ $data['id'] }}/edit" class="active">修改密码 </a></li>         
+                <input type="file"  name="photo" class="btn btn-info"/>
+                <hr>                   
+                        <a href="/userBG/{{  $userName }}/Personal_Center/{{ $data['id'] }}/edit" class="active">
+                            <button class="btn btn-info" type="button">修改密码</button>
+                        </a>          
                 <hr>
-                <button id="search-btn" class="btn btn-primary btn-sm btn-flat" type="submit"> 递交</button>
+                <button id="search-btn" class="btn btn-info" type="submit"> 递交</button>
                 
             </form>
         </div><!-- .post-bg-white -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \App\Http\Model\type;
+use \App\Http\Model\post;
 
 class TypeController extends Controller
 {
@@ -13,9 +14,32 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-       
+    public function index($userName)
+    {   
+
+        // 自定义函数获取用户所有数据
+        $UrlData = GetUrlData($userName);
+        $title ='分类列表';
+        $userName = $userName;
+        // 所有控制器必传参数
+        // ==============用这个方法可以做成多用户===
+
+        $data = GetUserData($userName);
+        // $userName = $data['userName'];
+        // dd($userName);
+        $uid = $data['id'];
+        // $uid = 2;
+        $data = type::select('*',\DB::raw("concat(path,',',id) as type_path "))->where('uid',$uid)->orderBy('type_path')->get();
+        // dd($data);
+        // 处理
+        foreach ($data as $key => $value) {
+            // 统计字符串数量
+            $num = substr_count($value->path,',' ); 
+            $value->name = str_repeat('---|', $num).$value->name;
+        }
+        // dd($value->id);
+        return view('user.Type.admin.Typeindex',compact('UrlData','title','userName','data'));
+
     }
 
     /**
@@ -23,16 +47,19 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
+    public function create(Request $request,$userName)
+    {   
+        // 自定义函数获取用户所有数据
+        $UrlData = GetUrlData($userName);
+        $title ='分类添加';
+        $userName = $userName;
+        // 所有控制器必传参数
         //
         // ==============用这个方法可以做成多用户===
         // 获取传递数据
-        $id = $request->userName;
         // ==============用这个方法可以做成多用户===
-        $data = GetUserData($id);
-        $userName = $id;
-        // dd($userName);
+        $data = GetUserData($userName);
+        
         $uid = $data['id'];
 
         $data = type::select('*',\DB::raw("concat(path,',',id) as type_path "))->where('uid',$uid)->orderBy('type_path')->get();
@@ -42,8 +69,7 @@ class TypeController extends Controller
             $num = substr_count($value->path,',' ); 
             $value->name = str_repeat('---|', $num).$value->name;
         }
-        // dd($data);
-        return view('user.Type.admin.Add',['title'=>'分类添加','data'=>$data,'userName'=>$userName]);
+        return view('user.Type.admin.Add',compact('UrlData','title','userName','data'));
     }
 
     /**
@@ -52,11 +78,17 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$userName)
     {
-        //
+        // -----------自定义函数获取用户所有数据
+
+        $UrlData = GetUrlData($userName);
+        $title ='分类添加';
+        $userName = $userName;
+
+        // ---------
+
         $data=$request->except('_token','userName');
-        $userName = $request->userName;
         $res = GetUserData($userName);
         // dd($userName);
         // 用的的uid
@@ -76,9 +108,9 @@ class TypeController extends Controller
         $type = type::insertGetId($data);
         if($type)
         {
-            return redirect('/userBG/Type/create?userName='.$userName)->with(['info'=>'添加成功']);
+            return redirect('/userBG/'.$userName.'/Type/create')->with(['info'=>'添加成功']);
         }else{
-            return redirect('/userBG/Type/create?userName='.$userName)->with(['info'=>'添加失败']);
+            return redirect('/userBG/'.$userName.'/Type/create')->with(['info'=>'添加失败']);
         }
 
     }
@@ -89,25 +121,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($userName)
     {
-         //
-        // ==============用这个方法可以做成多用户===
-        $data = GetUserData($id);
-        $userName = $id;
-        // dd($userName);
-        $uid = $data['id'];
-        // $uid = 2;
-        $data = type::select('*',\DB::raw("concat(path,',',id) as type_path "))->where('uid',$uid)->orderBy('type_path')->get();
-        // dd($data);
-        // 处理
-        foreach ($data as $key => $value) {
-            // 统计字符串数量
-            $num = substr_count($value->path,',' ); 
-            $value->name = str_repeat('---|', $num).$value->name;
-        }
-        // dd($value->id);
-        return view('user.Type.admin.Typeindex',['title'=>'分类列表','data'=>$data,'userName'=>$userName]);
+         
     }
 
     /**
@@ -116,9 +132,15 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request,$userName ,$id)
     {   
-        $userName =$request->userName;
+
+        // 自定义函数获取用户所有数据
+        $UrlData = GetUrlData($userName);
+        $title ='分类编辑';
+        $userName = $userName;
+        // 所有控制器必传参数
+
         // 判断是否为系统根命名
         if ($id==0) {
             return back()-> with(['info'=>'您没有权限编辑系统根目录']);
@@ -134,8 +156,7 @@ class TypeController extends Controller
             $value->name = str_repeat('---|', $num).$value->name;
         }
 
-        
-        return view('user.Type.admin.Edit',['title'=>'分类编辑','data'=>$data,'All_data'=>$All_data,'userName'=>$userName]);
+        return view('user.Type.admin.Edit',compact('UrlData','title','userName','data','All_data'));
     }
 
     /**
@@ -145,8 +166,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $userName ,$id)
+    {   
+       
         $userName = $request->userName;
         // ==============用这个方法可以做成多用户===
         $res = GetUserData($userName);
@@ -196,7 +218,7 @@ class TypeController extends Controller
          
         if($type)
         {
-            return redirect('/userBG/Type/'.$userName)->with(['info'=>'更新成功']);
+            return redirect('/userBG/'.$userName.'/Type')->with(['info'=>'更新成功']);
         }else{
             return back()->with(['info'=>'更新失败']);
         }
@@ -209,21 +231,34 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request,$userName,$id)
     {   
+        
         $userName = $request->userName;
         // dd($userName);
+        // 根据用户的ID查找表有没有和用户ID相等的PID数据如果则不能删除
+        $pid = type::where('pid',$id)->first(); 
+        if ($pid) {
+            return back()-> with(['info'=>'您的分区下有子分区请先删除子分区']);
+        }
+        $post = post::where('tid',$id)->first();
+
+        // 如果次分区下有博文则不能删除
+        if ($post){
+            return back()-> with(['info'=>'您的分区下有博文请先删除博文']);
+        }
 
         // 判断是否为系统根命名
         if ($id==0) {
             return back()-> with(['info'=>'您没有权限删除系统根目录']);
         }
+        
         //删除
         $type = type::where('id', $id)->delete();
 
         if($type)
         {
-            return redirect('/userBG/Type/'.$userName)->with(['info'=>'删除成功']);
+            return redirect('/userBG/'.$userName.'/Type')->with(['info'=>'删除成功']);
         }else{
             return back()->with(['info'=>'删除失败']);
         }

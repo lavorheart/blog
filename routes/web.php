@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // 前台登录限制控制组
 Route::group(['middleware'=>'userlogin'],function(){
@@ -59,10 +59,9 @@ Route::post('/user/updatepass','User\PassController@updatepass');
 
 /**
 *前台主页通过name获取用户数据
-*未做
+*
 */
-Route::get('/userHome/{userName}/blog','User\IndexController@index');
-// Route::resource('/userHome/{userName}/blog','User\Home\IndexController');
+Route::resource('/userHome/{userName}/blog','User\Home\IndexController');
 
 //=================前台页结束====
 
@@ -71,7 +70,7 @@ Route::get('/userHome/{userName}/blog','User\IndexController@index');
 *用户后台用户中心
 *
 */
-Route::resource('/userBG/Personal_Center','User\Personal_CenterController');
+Route::resource('/userBG/{userName}/Personal_Center','User\Personal_CenterController');
 
 //================================================
 
@@ -80,7 +79,7 @@ Route::resource('/userBG/Personal_Center','User\Personal_CenterController');
 *用户后台分区列表页
 *
 */
-Route::resource('/userBG/Type','User\TypeController');
+Route::resource('/userBG/{userName}/Type','User\TypeController');
 
 
 /**
@@ -91,13 +90,17 @@ Route::get('/user/detail','User\DetailController@detail');
 
 
 /**
-*未做
-*帖子路由
+*
+*帖子路由(帖子搜索)
 */
-Route::resource('/post','User\PostController');
+Route::resource('/userBG/{userName}/post','User\PostController');
 
 
-
+// /**
+// *
+// *核心路由分页搜索博文
+// */
+// Route::get('/userHome/{userName}/post','User\Core\SearchController@Search');
 
 // ==================mood
 

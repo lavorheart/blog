@@ -1,8 +1,9 @@
 @extends('layout.layouts')
 @section('content')
         <div class="left-content">
-            
-            <h3>:编辑分区</h3><br>
+
+            <h2 contenteditable="true">:编辑分区</h2>
+            <br>
             <h5 style="color:red">{{ session('info')}}</h5>
         
                 <!-- 判断用户登录后状态 -->
@@ -12,16 +13,16 @@
 
                             <div class="post-bg-white">
 
-                                <form id="form-post-comment" action="{{ url('/userBG/Type')}}/{{ $data->id}}" method="post" enctype="multipart/form-data">
+                                <form id="form-post-comment" action="{{url('/userBG')}}/{{ $userName }}/Type/{{ $data->id}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field()}}
                                     {{ method_field('PATCH') }}
                                     分类名称: 
                                     <input type="hidden" name="userName" value="{{$userName}}">
-                                    <input type="text" value="{{ $data->name }}" name="name" ><br> 
+                                    <input type="text"  btn-info" value="{{ $data->name }}" name="name" ><br> 
                                     分类blogo:
 
                                     <img src="/user/images/photo/{{ $data->blogo}}" width="500"> <br>
-                                    <input type="file" name="blogo"/> <br>
+                                    <input type="file" class="btn btn-info" name="blogo"/> <br><br>
                                     <file>
                                      更改分区:
                                     <select name="pid">
@@ -36,7 +37,7 @@
                                         value="{{ $value->id }}"> {{ $value->name }} </option>
                                         @endforeach
                                     </select> 
-                                    <input type="submit" value="递交" class="submit">
+                                    <button id="search-btn" class="btn btn-info" type="submit"> 递交</button>
                                 </form>
                             </div>
                         <hr>
